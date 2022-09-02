@@ -25,7 +25,8 @@
 - 投稿機能で自分の意見を共有したい時
 
 ##  説計書
-作成中です
+### ER図
+<img width="930" alt="スクリーンショット 2022-09-02 14 32 35 1" src="https://user-images.githubusercontent.com/108508043/188066073-d5473e90-8707-44ea-b278-aca3e64d9c0d.png">
 
 ## 開発環境
 - OS：macOS Monterey
