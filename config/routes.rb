@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
-  root to: 'homes#top'
-
-  devise_for :users,skip: [:passwords], controllers: {
-  registrations: "user/registrations",
-  sessions: 'user/sessions'
+  
+  root to: 'public/homes#top'
+  
+  
+  namespace :public do
+  resources :users, only: [:show, :edit, :uodate]
+  get "homes/terms" => "homes#terms"
+  
+  
+  end
+  devise_for :users,path: :public,skip: [:passwords], controllers: {
+  registrations: "public/user/registrations",
+  sessions: 'public/user/sessions'
 }
+
+  
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
