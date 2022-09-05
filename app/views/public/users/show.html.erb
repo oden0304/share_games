@@ -1,2 +1,18 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<div class="container">
+  <h2>
+    <%= @user.name %>さんのマイページ
+  </h2>
+  <div>
+  <% if @user.profile_image.attached? %>
+    <h2>
+      <%= image_tag @user.profile_image, size: "200x200" %>
+      <%= @user.name %>
+    </h2>
+  <% else %>
+    <h2>
+      <%= image_tag 'no_image', size: "200x200" %>
+      <%= @user.name %>
+    </h2>
+  <% end %>
+  </div>
+</div>
