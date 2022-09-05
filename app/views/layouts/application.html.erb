@@ -21,33 +21,49 @@
         </strong>
       </h2>
       <div class="collapse navbar-collapse mr-5">
-        
-        <ul class="ml-auto pt-3">
-          <li class="nav-item active">
-            <%= link_to "ログイン", root_path, class: "text-white" %>
-          </li>
-        </ul>
-        <ul class="pt-3">
-          <li class="nav-item">
-             <%= link_to "マイページ", root_path, class: "text-white" %>
-          </li>
-        </ul>
-        <ul class="pt-3">
-          <li class="nav-item">
-            <%= link_to "つぶやく", root_path, class: "text-white" %>
-          </li>
-        </ul>
-        <ul class="pt-3">
-          <li class="nav-item">
-            <%= link_to "タイムライン", root_path, class: "text-white" %>
-          </li>
-        </ul>
-        <ul class="pt-3">
-          <li class="nav-item">
-            <%= link_to "利用規約", root_path, class: "text-white" %>
-          </li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </ul>
+        <% if user_signed_in? %>
+          <ul class="ml-auto list-unstyled pt-3">
+            <li class="nav-item active">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="pt-3">
+            <li class="nav-item">
+               <%= link_to "マイページ", public_user_path(current_user), class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="pt-3">
+            <li class="nav-item">
+              <%= link_to "つぶやく", root_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="pt-3">
+            <li class="nav-item">
+              <%= link_to "タイムライン", root_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="pt-3">
+            <li class="nav-item">
+              <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
+            </li>
+          </ul>
+        <% else %>
+          <ul class="ml-auto list_unstyled pt-3">
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="pt-3">
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="pt-3">
+            <li class="nav-item">
+              <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
+            </li>
+          </ul>
+        <% end %>
       </div>
     </nav>
   <body>
