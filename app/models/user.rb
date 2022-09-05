@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :authentication_keys => [:name]
          
+  #新規登録時のチェックボックスのバリデーション       
   validates_acceptance_of :agreement, allow_nil: false, on: :create
          
   has_one_attached :profile_image

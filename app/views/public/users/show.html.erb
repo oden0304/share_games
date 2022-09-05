@@ -1,18 +1,46 @@
-<div class="container">
+<div class="container border">
   <h2>
     <%= @user.name %>さんのマイページ
   </h2>
-  <div>
-  <% if @user.profile_image.attached? %>
-    <h2>
-      <%= image_tag @user.profile_image, size: "200x200" %>
-      <%= @user.name %>
-    </h2>
-  <% else %>
-    <h2>
-      <%= image_tag 'no_image', size: "200x200" %>
-      <%= @user.name %>
-    </h2>
-  <% end %>
-  </div>
+  <table>
+    <% if @user.profile_image.attached? %>
+    <tr>
+      <th><%= image_tag @user.profile_image, size: "200x200" %></th>
+      <th><h2><%= @user.name %></h2></th>
+    </tr>
+    <% else %>
+      <tr>
+        <th><%= image_tag 'no_image', size: "200x200" %></th>
+        <th><h2><%= @user.name %></h2></th>
+      </tr>
+    <% end %>
+    <tr>
+      <th>フォロー</th>
+    </tr>
+    <tr>
+      <th>フォロワー</th>
+    </tr>
+    <tr>
+      <th>introduction:</th>
+      <th><%= @user.introduction %></th>
+    </tr>
+  </table>
+</div>
+<div class="container border">
+  <ul class="nav nav-tabs nav-fill">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">過去の投稿</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">いいね一覧</a>
+    </li>
+  </ul>
+  <div class="tabbox-contents">
+    <div class="tabbox box-show">
+      <%= render 'post' %>    
+    </div>
+    <div class="tabbox">
+      <%= render 'favorite' %>
+    </div>
+  </duv>
 </div>

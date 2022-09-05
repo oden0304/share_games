@@ -27,39 +27,39 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
             </li>
           </ul>
-          <ul class="pt-3">
-            <li class="nav-item">
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
                <%= link_to "マイページ", public_user_path(current_user), class: "text-white" %>
             </li>
           </ul>
-          <ul class="pt-3">
-            <li class="nav-item">
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
               <%= link_to "つぶやく", root_path, class: "text-white" %>
             </li>
           </ul>
-          <ul class="pt-3">
-            <li class="nav-item">
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
               <%= link_to "タイムライン", root_path, class: "text-white" %>
             </li>
           </ul>
-          <ul class="pt-3">
-            <li class="nav-item">
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
               <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
             </li>
           </ul>
         <% else %>
           <ul class="ml-auto list_unstyled pt-3">
-            <li class="nav-item">
+            <li class="nav-item ml-4">
               <%= link_to "ログイン", new_user_session_path, class: "text-white" %>
             </li>
           </ul>
-          <ul class="pt-3">
-            <li class="nav-item">
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
               <%= link_to "新規登録", new_user_registration_path, class: "text-white" %>
             </li>
           </ul>
-          <ul class="pt-3">
-            <li class="nav-item">
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
               <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
             </li>
           </ul>
