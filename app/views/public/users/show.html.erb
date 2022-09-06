@@ -1,17 +1,22 @@
 <div class="container border">
-  <h2>
-    <%= @user.name %>さんのマイページ
-  </h2>
-  <table>
+  <div style="text-aline:left;">
+    <h2 class="mt-5">
+      <%= @user.name %>さんのマイページ
+    </h2>
+  </div>
+  <div class="mt-5 mr-5" style="text-aline:right; float:right">
+    <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-success mr-auto" %>
+  </div>
+  <table class="ml-5">
     <% if @user.profile_image.attached? %>
     <tr>
       <th><%= image_tag @user.profile_image, size: "200x200" %></th>
-      <th><h2><%= @user.name %></h2></th>
+      <th><h2 class="ml-5"><%= @user.name %></h2></th>
     </tr>
     <% else %>
       <tr>
         <th><%= image_tag 'no_image', size: "200x200" %></th>
-        <th><h2><%= @user.name %></h2></th>
+        <th><h2 class="ml-5"><%= @user.name %></h2></th>
       </tr>
     <% end %>
     <tr>
@@ -27,11 +32,11 @@
   </table>
 </div>
 <div class="container border">
-  <ul class="nav nav-tabs nav-fill">
-    <li class="nav-item">
+  <ul class="nav nav-tabs nav-fill tab-list list-unstyled">
+    <li class="nav-item tab tab-active">
       <a class="nav-link active" href="#">過去の投稿</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item tab">
       <a class="nav-link" href="#">いいね一覧</a>
     </li>
   </ul>

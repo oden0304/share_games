@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates_acceptance_of :agreement, allow_nil: false, on: :create
          
   has_one_attached :profile_image
+  
+  has_many :posts, dependent: :destroy
          
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

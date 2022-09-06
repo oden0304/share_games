@@ -1,0 +1,7 @@
+<div class="container border">
+  <h2 class="ml-3 mt-5">つぶやく内容</h2>
+  <%= form_with model: @post, url: public_post_path(current_user.id), method: :post do |f| %>
+    <%= f.text_area :text, size: "110x20"%>
+    <%= f.submit "つぶやく", class: "btn btn-lg btn-warning mb-5 ml-3" %>
+  <% end %>
+</div>

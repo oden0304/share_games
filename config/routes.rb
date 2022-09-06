@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  
+
   root to: 'public/homes#top'
   
   
   namespace :public do
-  resources :users, only: [:show, :edit, :uodate]
+  resources :users, only: [:show, :edit, :update]
+  resources :posts, only: [:new, :index, :show, :create, :update]
   get "homes/terms" => "homes#terms"
   
   
