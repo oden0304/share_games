@@ -1,12 +1,5 @@
 <div class="container border">
-  <div style="text-aline:left;">
-    <h2 class="mt-5">
-      <%= @user.name %>さんのマイページ
-    </h2>
-  </div>
-  <div class="mt-5 mr-5" style="text-aline:right; float:right">
-    <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-success mr-auto" %>
-  </div>
+
   <table class="ml-5">
     <% if @user.profile_image.attached? %>
     <tr>
@@ -20,10 +13,35 @@
       </tr>
     <% end %>
     <tr>
-      <th>フォロー</th>
+      <th>
+        <% unless @user == current_user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", public_user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to "フォローする", public_user_relationships_path(@user.id), method: :post, class: "btn btn-primary" %>
+          <% end %>
+          <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-success mr-auto" %>
+        <% else %>
+          <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-success mr-auto" %>
+        <% end %>
+      </th>
+      <th></th>
     </tr>
     <tr>
-      <th>フォロワー</th>
+      <th>フォロー:</th>
+      <th>
+        <%= link_to public_user_followings_path(@user.id) do %>
+          <%= @user.followings.count %>
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th>フォロワー:</th>
+      <th>
+        <%= link_to public_user_followers_path(@user.id) do %>
+          <%= @user.followers.count %>
+        <% end %>
+      </th>
     </tr>
     <tr>
       <th>introduction:</th>
@@ -34,17 +52,17 @@
 <div class="container border">
   <ul class="nav nav-tabs nav-fill tab-list list-unstyled">
     <li class="nav-item tab tab-active">
-      <a class="nav-link active" href="#">過去の投稿</a>
+      <a class="nav-link active" data-toggle="tab" href="#tab-post">過去の投稿</a>
     </li>
     <li class="nav-item tab">
-      <a class="nav-link" href="#">いいね一覧</a>
+      <a class="nav-link" data-toggle="tab" href="#tab-favorite">いいね一覧</a>
     </li>
   </ul>
-  <div class="tabbox-contents">
-    <div class="tabbox box-show">
+  <div class="tab-content">
+    <div class="tab-pane box-show show active" id="tab-post">
       <%= render 'post' %>    
     </div>
-    <div class="tabbox">
+    <div class="tab-pane" id="tab-favorite">
       <%= render 'favorite' %>
     </div>
   </duv>

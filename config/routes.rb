@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   
-  
   namespace :public do
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
   resources :posts, only: [:new, :index, :show, :create, :update]
   get "homes/terms" => "homes#terms"
   

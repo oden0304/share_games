@@ -1,0 +1,23 @@
+<% if users.exists? %>
+  <% users.each do |user| %>
+    <table class="table">
+      <% if user.profile_image.attached? %>
+        <tr>
+          <th><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+          <th><h2><%= user.name %></h2></th>
+          <th>フォロー: <%= user.followings.count %></th>
+          <th>フォロワー: <%= user.followers.count %></th>
+        </tr>
+      <% else %>
+        <tr>
+          <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+          <th><h2><%= user.name %></h2></th>
+          <th>フォロー: <%= user.followings.count %></th>
+          <th>フォロワー: <%= user.followers.count %></th>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
