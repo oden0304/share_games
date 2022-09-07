@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+.bg-image {
+  background-image: image-url("gameneon01.jpg");
+  height: 800px;
+  background-size: cover;
+}
