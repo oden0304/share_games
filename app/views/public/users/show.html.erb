@@ -1,14 +1,14 @@
-<div class="container border">
+<div class="container border h-100" style="background-color:#fde9dd;">
 
   <table class="ml-5">
     <% if @user.profile_image.attached? %>
     <tr>
-      <th><%= image_tag @user.profile_image, size: "200x200" %></th>
+      <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
       <th><h2 class="ml-5"><%= @user.name %></h2></th>
     </tr>
     <% else %>
       <tr>
-        <th><%= image_tag 'no_image', size: "200x200" %></th>
+        <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
         <th><h2 class="ml-5"><%= @user.name %></h2></th>
       </tr>
     <% end %>
@@ -48,8 +48,6 @@
       <th><%= @user.introduction %></th>
     </tr>
   </table>
-</div>
-<div class="container border">
   <ul class="nav nav-tabs nav-fill tab-list list-unstyled">
     <li class="nav-item tab tab-active">
       <a class="nav-link active" data-toggle="tab" href="#tab-post">過去の投稿</a>

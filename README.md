@@ -36,8 +36,7 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です<br>
-photoAC様  https://www.photo-ac.com/main/search?q=%E3%82%B2%E3%83%BC%E3%83%A0&srt=dlrank&qt=&pp=70&p=1&pt=A
+GAHAG様　https://gahag.net/000770-rpg-game/
 
 ## 注意事項
 ゲームの画像やイラスト、キャプチャーなどに関する著作権がありますので<br>
