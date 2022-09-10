@@ -1,2 +1,37 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="container border p-5">
+  <h2 class="border-bottom border-dark">タイムライン</h2>
+    <% @posts.each do |post| %>
+      <%= link_to public_post_path(post), :style=>"color:black;" do %>
+        <% if post.user.profile_image.attached? %>
+          <table class="w-100">
+            <tr>
+              <th><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+              <th>
+                <h3><b><%= post.user.name %></b></h3>
+              </th>
+            </tr>
+            <tr class="border-bottom border-dark">
+              <th width="100"></th>
+              <th align="left">
+                <h5><%=safe_join(post.text.split("\n"),tag(:br))%></h5>
+              </th>
+            </tr>
+          </table>
+        <% else %>
+          <table class="w-100">
+            <tr>
+              <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+              <th>
+                <h3><b><%= post.user.name %></b></h3>
+              </th>
+            </tr>
+            <tr class="border-bottom border-dark">
+              <th width="100"></th>
+              <th><h5><%=safe_join(post.text.split("\n"),tag(:br))%></h5></th>
+            </tr>
+          </table>
+        <% end %>
+      <% end %>
+    <% end %>
+  </table>
+</div>

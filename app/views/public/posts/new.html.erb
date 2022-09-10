@@ -1,4 +1,4 @@
-<div class="container border h-100" style="background-color:#fde9dd;">
+<div class="container border">
   <h2 class="ml-3 mt-5">つぶやく内容</h2>
   <%= form_with model: @post, url: public_posts_path, method: :post do |f| %>
     <%= f.text_area :text, size: "110x20"%>

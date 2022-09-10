@@ -1,6 +1,5 @@
-<div class="container border h-100" style="background-color:#fde9dd;">
-
-  <table class="ml-5">
+<div class="container border">
+  <table class="ml-5 mt-5">
     <% if @user.profile_image.attached? %>
     <tr>
       <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>

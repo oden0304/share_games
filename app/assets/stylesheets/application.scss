@@ -18,3 +18,33 @@
   height: 800px;
   background-size: cover;
 }
+
+.edit-image {
+  display: none;
+}
+
+.edit-btn {
+  display: block;
+  background-color: #28a745;
+  width: 200px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding-top: 8px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+  cursor: hand;
+  background-color: #228B22;
+}
+
+.container {
+  overflow: scroll;
+  background-color: #fde9dd;
+  height: 100%;
+}

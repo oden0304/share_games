@@ -1,16 +1,26 @@
-<div class="container border h-100" style="background-color:#fde9dd;">
-  <h2>プロフィール編集</h2>
+<div class="container border">
+  <h2 class="mt-5 ml-3">プロフィール編集</h2>
   <%= form_with model: @user, url: public_user_path(@user) do |f| %>
     <table class="ml-5">
       <% if @user.profile_image.attached? %>
         <tr>
           <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
-          <th><%= f.file_field :profile_image, accept: "image/*" %></th>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :profile_image, "プロフィール画像を変更", class: "edit-btn" %>
+            <%= f.file_field :profile_image, accept: "image/*", class: "edit-image" %>
+          </th>
         </tr>
       <% else %>
         <tr>
           <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
-          <th><%= f.file_field :profile_image, accept: "image/*" %></th>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :profile_image, "プロフィール画像を変更", class: "edit-btn" %>
+            <%= f.file_field :profile_image, accept: "image/*", class: "efit-image" %>
+          </th>
         </tr>
       <% end %>
     </table>
@@ -21,7 +31,7 @@
       </tr>
       <tr>
         <th>自己紹介</th>
-        <th><%= f.text_area :introduction %></th>
+        <th><%= f.text_area :introduction, size: "40x10" %></th>
       </tr>
     </table>
     <div class="text-right mb-3 mr-5">

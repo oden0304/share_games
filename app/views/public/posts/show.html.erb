@@ -1,4 +1,4 @@
-<div class="container border h-100 p-5" style="background-color:#fde9dd;">
+<div class="container border">
   <h2>投稿詳細</h2>
   <table class="ml-5">
     <% if @user.profile_image.attached? %>
@@ -13,7 +13,7 @@
       </tr>
     <% end %>
     <tr>
-      <th class="p-5"><%= @post.text %></th>
+      <th class="p-5"><%=safe_join(@post.text.split("\n"),tag(:br))%></th>
     </tr>
   </table>
 </div>
