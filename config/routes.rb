@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-  resources :posts, only: [:new, :index, :show, :create, :update]
+  resources :posts, only: [:new, :index, :show, :create, :update] do
+    resources :favorites, only: [:create, :destroy]
+  end
   get "homes/terms" => "homes#terms"
   
   

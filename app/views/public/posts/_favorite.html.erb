@@ -1,0 +1,11 @@
+<% if post.favorited?(current_user) %>
+  <%= link_to public_post_favorite_path(post.id), method: :delete do %>
+    <i class="fas fa-heart fa-lg heart"></i>
+  <% end %>
+  <%= post.favorites.count %>
+<% else %>
+  <%= link_to public_post_favorites_path(post.id), method: :post do %>
+    <i class="far fa-heart fa-lg heart"></i>
+  <% end %>
+  <%= post.favorites.count %>
+<% end %>

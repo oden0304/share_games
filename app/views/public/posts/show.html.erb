@@ -15,5 +15,10 @@
     <tr>
       <th class="p-5"><%=safe_join(@post.text.split("\n"),tag(:br))%></th>
     </tr>
+    <tr>
+      <th>
+        <%= render "public/posts/favorite", post: @post %>
+      </th>
+    </tr>
   </table>
 </div>
