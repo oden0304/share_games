@@ -1,45 +1,32 @@
 <div class="container border">
-  <table class="ml-5 mt-5">
+  <table class="m-5">
     <% if @user.profile_image.attached? %>
     <tr>
       <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
-      <th><h2 class="ml-5"><%= @user.name %></h2></th>
+      <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
     </tr>
     <% else %>
       <tr>
         <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
-        <th><h2 class="ml-5"><%= @user.name %></h2></th>
+        <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
       </tr>
     <% end %>
     <tr>
-      <th>
-        <% unless @user == current_user %>
-          <% if current_user.following?(@user) %>
-            <%= link_to "フォロー外す", public_user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
-          <% else %>
-            <%= link_to "フォローする", public_user_relationships_path(@user.id), method: :post, class: "btn btn-primary" %>
-          <% end %>
-          <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-success mr-auto" %>
-        <% else %>
-          <%= link_to "編集", edit_public_user_path(@user), class: "btn btn-success mr-auto" %>
-        <% end %>
+      <th id='follow-btn_#{ user.id }'>
+        <%= render "public/relationships/follow_btn", user: @user %>
       </th>
       <th></th>
     </tr>
     <tr>
       <th>フォロー:</th>
-      <th>
-        <%= link_to public_user_followings_path(@user.id) do %>
-          <%= @user.followings.count %>
-        <% end %>
+      <th id='following-count_#{ user.id }'>
+        <%= link_to "#{ @user.followings.count }", public_user_followings_path(@user), remote: true %>
       </th>
     </tr>
     <tr>
       <th>フォロワー:</th>
-      <th>
-        <%= link_to public_user_followers_path(@user.id) do %>
-          <%= @user.followers.count %>
-        <% end %>
+      <th id='following-count_#{ user.id }'>
+        <%= link_to "#{ @user.followers.count }", public_user_followers_path(@user), remote: true %>
       </th>
     </tr>
     <tr>
@@ -47,17 +34,34 @@
       <th><%= @user.introduction %></th>
     </tr>
   </table>
-  <ul class="nav nav-tabs nav-fill tab-list list-unstyled">
-    <li class="nav-item tab tab-active">
+  <ul class="nav nav-tabs nav-fill">
+    <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#tab-post">過去の投稿</a>
     </li>
-    <li class="nav-item tab">
+    <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#tab-favorite">いいね一覧</a>
     </li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane box-show show active" id="tab-post">
-      <%= render 'post' %>    
+    <div class="tab-pane active mt-5" id="tab-post">
+      <% @posts.each do |post| %>
+        <table class="m-5 border-bottom border-dark w-100">
+          <% if post.user.profile_image.attached? %>
+            <tr>
+              <th width="50"><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+              <th><h4><b><%= post.user.name %></b></h4></th>
+            </tr>
+          <% else %>
+            <tr>
+              <th width="50"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+              <th><h4><b><%= post.user.name %></h4></b></th>
+            </tr>
+          <% end %>
+          <tr>
+            <th class="p-5"><%=safe_join(post.text.split("\n"),tag(:br))%></th>
+          </tr>
+        </table>
+      <% end %>
     </div>
     <div class="tab-pane" id="tab-favorite">
       <%= render 'favorite' %>

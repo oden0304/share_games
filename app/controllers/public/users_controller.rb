@@ -2,6 +2,8 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
+    @posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
   end
 
   def edit
