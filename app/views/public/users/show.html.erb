@@ -65,8 +65,8 @@
               <th class="p-5 text"><%= safe_join(post.text.split("\n"),tag(:br)) %></th>
             </tr>
           </table>
-          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= @post.id %>">
-            <b><%= render 'public/posts/favorite', post: @post %></b>
+          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= post.id %>">
+            <b><%= render 'public/posts/favorite', post: post %></b>
           </div>
         <% end %>
       <% end %>
@@ -93,8 +93,8 @@
               <th class="p-5 text"><%= safe_join(post.text.split("\n"),tag(:br)) %></th>
             </tr>
           </table>
-          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= @post.id %>">
-            <b><%= render 'public/posts/favorite', post: @post %></b>
+          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= post.id %>">
+            <b><%= render 'public/posts/favorite', post: post %></b>
           </div>
         <% end %>
       <% end %>
