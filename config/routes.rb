@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :posts, only: [:new, :index, :show, :create, :update] do
+    resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
   get "homes/terms" => "homes#terms"

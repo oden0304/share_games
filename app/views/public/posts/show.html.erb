@@ -1,4 +1,6 @@
 <div class="container border">
+  <div class="row">
+    <div class="col-md-8">
   <h2>投稿詳細</h2>
   <table class="ml-5">
     <% if @user.profile_image.attached? %>
@@ -13,7 +15,7 @@
       </tr>
     <% end %>
     <tr>
-      <th class="p-5"><%=safe_join(@post.text.split("\n"),tag(:br))%></th>
+      <th class="p-5"><%= safe_join(@post.text.split("\n"),tag(:br)) %></th>
     </tr>
     <tr>
       <th>
@@ -21,4 +23,37 @@
       </th>
     </tr>
   </table>
+  <table>
+  <tbody>
+    <% @post.comments.each do |comment| %>
+      <% if @user.profile_image.attached? %>
+      <tr>
+        <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
+        <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
+      </tr>
+    <% else %>
+      <tr>
+        <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
+        <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
+      </tr>
+    <% end %>
+    <tr>
+      <td><%= comment.comment %></td>
+      <td>
+        
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
+  <div class="col-md-4">
+    <%= form_with model: @comment, url: public_post_comments_path(@post), method: :post do |f| %>
+      <div class="m-5 p-5">
+        <%= f.text_area :comment, placeholder: "コメントしよう！", size: "25x10" %>
+        <%= f.submit "コメントする", class: "btn btn-md btn-warning" %>
+      </div>
+    <% end %>
+  </div>
+  </div>
 </div>
