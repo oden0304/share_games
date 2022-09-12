@@ -53,4 +53,12 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(name: 'guestuser') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+      user.agreement = true
+    end
+  end
 end

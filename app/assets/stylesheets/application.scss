@@ -52,3 +52,16 @@
 .heart {
   color: red;
 }
+
+.text {
+  white-space: nowrap;
+}
+
+.post-link {
+  color: black;
+}
+
+.post-link:hover {
+  color: black;
+  text-decoration: none;
+}

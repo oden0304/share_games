@@ -2,8 +2,12 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @post = Post.find(params[:id])
     @posts = @user.posts
     @posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
   end
 
   def edit
@@ -24,4 +28,5 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
+
 end

@@ -1,10 +1,10 @@
 <div class="container border">
   <table class="m-5">
     <% if @user.profile_image.attached? %>
-    <tr>
-      <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
-      <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
-    </tr>
+      <tr>
+        <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
+        <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
+      </tr>
     <% else %>
       <tr>
         <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
@@ -45,26 +45,59 @@
   <div class="tab-content">
     <div class="tab-pane active mt-5" id="tab-post">
       <% @posts.each do |post| %>
-        <table class="m-5 border-bottom border-dark w-100">
-          <% if post.user.profile_image.attached? %>
+        <%= link_to public_post_path(post), class: "post-link" do %>
+          <table class="mt-2 ml-5">
+            <% if post.user.profile_image.attached? %>
+              <tr>
+                <th><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+                <th><h4><b><%= post.user.name %></b></h4></th>
+              </tr>
+            <% else %>
+              <tr>
+                <th class="pr-3"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+                <th><h4><b><%= post.user.name %></h4></b></th>
+              </tr>
+            <% end %>
+          </table>
+          <table>
             <tr>
-              <th width="50"><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-              <th><h4><b><%= post.user.name %></b></h4></th>
+              <th width="120"></th>
+              <th class="p-5 text"><%= safe_join(post.text.split("\n"),tag(:br)) %></th>
             </tr>
-          <% else %>
-            <tr>
-              <th width="50"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
-              <th><h4><b><%= post.user.name %></h4></b></th>
-            </tr>
-          <% end %>
-          <tr>
-            <th class="p-5"><%=safe_join(post.text.split("\n"),tag(:br))%></th>
-          </tr>
-        </table>
+          </table>
+          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= @post.id %>">
+            <b><%= render 'public/posts/favorite', post: @post %></b>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="tab-pane" id="tab-favorite">
-      <%= render 'favorite' %>
+      <% @favorite_posts.each do |post|%>
+        <%= link_to public_post_path(post), class: "post-link" do %>
+          <table class="mt-2 ml-5">
+            <% if post.user.profile_image.attached? %>
+              <tr>
+                <th><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+                <th><h4><b><%= post.user.name %></b></h4></th>
+              </tr>
+            <% else %>
+              <tr>
+                <th class="pr-3"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+                <th><h4><b><%= post.user.name %></h4></b></th>
+              </tr>
+            <% end %>
+          </table>
+          <table>
+            <tr>
+              <th width="120"></th>
+              <th class="p-5 text"><%= safe_join(post.text.split("\n"),tag(:br)) %></th>
+            </tr>
+          </table>
+          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= @post.id %>">
+            <b><%= render 'public/posts/favorite', post: @post %></b>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </duv>
 </div>

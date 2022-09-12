@@ -9,9 +9,8 @@
     自分の情報をつぶやいたり、興味のある人をフォローして最新情報をシェアしよう！
   </p>
   <div>
-    <p class="text-center pt-3">
-      会員登録はこちらから！<%= link_to "新規登録",  new_user_registration_path, class: "btn btn-success" %>
-      登録済みの方はこちらから！<%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
-    </p>
+    <p class="text-center">会員登録はこちらから！<%= link_to "新規登録",  new_user_registration_path, class: "btn btn-success" %></p>
+    <p class="text-center">登録済みの方はこちらから！<%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %></p>
+    <p><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %></p>
   </div>
 </div>
