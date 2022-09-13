@@ -20,7 +20,7 @@
           <th class="p-5"><%= safe_join(@post.text.split("\n"),tag(:br)) %></th>
         </tr>
         <tr>
-          <th class="pl-5"><%= image_tag @post.post_image, size: "600x300" %></th>
+          <th class="pl-5"><%= image_tag @post.post_image, size: "600x300" if @post.post_image.attached? %></th>
         </tr>
       </table>
       <div class="text-right p-3">
@@ -35,7 +35,7 @@
   <div class="col-md-4" id="comment_form">
     <%= render "public/comments/comment_form", comment: @comment, post: @post %>
   </div>
-  <div class="row border-top border-dark w-100">
+  <div class="border-top border-dark w-100">
     <table>
       <tbody class="pl-3">
         <% @post.comments.each do |comment| %>
