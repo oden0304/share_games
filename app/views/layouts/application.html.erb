@@ -48,6 +48,16 @@
               <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
             </li>
           </ul>
+          <ul class="list-unstyled pt-4">
+            <li class="nav-item ml-4">
+              <%= form_tag public_posts_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search", :name => nil %>
+                </p>
+              <% end %>
+            </li>
+          </ul>
         <% else %>
           <ul class="ml-auto list_unstyled pt-3">
             <li class="nav-item ml-4">

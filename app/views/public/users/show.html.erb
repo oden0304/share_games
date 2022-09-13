@@ -20,13 +20,13 @@
     <tr>
       <th>フォロー:</th>
       <th id='following-count_<%= @user.id %>'>
-        <%= link_to "#{ @user.followings.count }", public_user_followings_path(@user), remote: true %>
+        <%= render "public/relationships/followings", post: @post %>
       </th>
     </tr>
     <tr>
       <th>フォロワー:</th>
       <th id='following-count_<%= @user.id %>'>
-        <%= link_to "#{ @user.followers.count }", public_user_followers_path(@user), remote: true %>
+        <%= render "public/relationships/followers", post: @post %>
       </th>
     </tr>
     <tr>

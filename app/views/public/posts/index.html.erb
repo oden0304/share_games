@@ -1,40 +1,38 @@
 <div class="container border p-5">
-  <h2 class="border-bottom border-dark">タイムライン</h2>
-    <% @posts.each do |post| %>
-      <%= link_to public_post_path(post), class: "post-link" do %>
-        <% if post.user.profile_image.attached? %>
-          <table class="w-100">
-            <tr>
-              <th><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-              <th>
-                <h3><b><%= post.user.name %></b></h3>
-              </th>
-            </tr>
-            <tr class="border-bottom border-dark">
-              <th width="100"></th>
-              <th align="left">
-                <h5><%= safe_join(post.text.split("\n"),tag(:br)) %></h5>
-              </th>
-            </tr>
-          </table>
-        <% else %>
-          <table class="w-100">
-            <tr>
-              <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
-              <th>
-                <h3><b><%= post.user.name %></b></h3>
-              </th>
-            </tr>
-            <tr>
-              <th width="100"></th>
-              <th><h5><%= safe_join(post.text.split("\n"),tag(:br)) %></h5></th>
-            </tr>
-          </table>
-          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= post.id %>">
-            <b><%= render 'public/posts/favorite', post: post %></b>
-          </div>
-        <% end %>
+  <% @posts.each do |post| %>
+    <%= link_to public_post_path(post), class: "post-link" do %>
+      <% if post.user.profile_image.attached? %>
+        <table class="w-100">
+          <tr>
+            <th><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+            <th>
+              <h3><b><%= post.user.name %></b></h3>
+            </th>
+          </tr>
+          <tr class="border-bottom border-dark">
+            <th width="100"></th>
+            <th align="left">
+              <h5><%= safe_join(post.text.split("\n"),tag(:br)) %></h5>
+            </th>
+          </tr>
+        </table>
+      <% else %>
+        <table class="w-100">
+          <tr>
+            <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+            <th>
+              <h3><b><%= post.user.name %></b></h3>
+            </th>
+          </tr>
+          <tr>
+            <th width="100"></th>
+            <th><h5><%= safe_join(post.text.split("\n"),tag(:br)) %></h5></th>
+          </tr>
+        </table>
+        <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= post.id %>">
+          <b><%= render 'public/posts/favorite', post: post %></b>
+        </div>
       <% end %>
     <% end %>
-  </table>
+  <% end %>
 </div>
