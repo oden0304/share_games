@@ -49,7 +49,7 @@
           <table class="mt-2 ml-5">
             <% if post.user.profile_image.attached? %>
               <tr>
-                <th><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+                <th class="pr-3"><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
                 <th><h4><b><%= post.user.name %></b></h4></th>
               </tr>
             <% else %>
@@ -84,7 +84,7 @@
           <table class="mt-2 ml-5">
             <% if post.user.profile_image.attached? %>
               <tr>
-                <th><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+                <th class="pr-3"><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
                 <th><h4><b><%= post.user.name %></b></h4></th>
               </tr>
             <% else %>
@@ -98,6 +98,9 @@
             <tr>
               <th width="120"></th>
               <th class="p-5 text"><%= safe_join(post.text.split("\n"),tag(:br)) %></th>
+            </tr>
+            <tr>
+              <th class="pl-5"><%= image_tag post.post_image, size: "600x300" if post.post_image.attached? %></th>
             </tr>
           </table>
           <div class="border-bottom border-dark w-100 text-right p-3">
