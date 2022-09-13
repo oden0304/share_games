@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+ 
 .body-bg-image {
   background-image: image-url("gahag-0007706759");
   height: 800px;
@@ -29,7 +35,6 @@
   width: 200px;
   height: 40px;
   margin-top: 10px;
-  margin-left: 10px;
   border-radius: 5px;
   padding-top: 8px;
   color: white;

@@ -1,51 +1,58 @@
-<div class="container border">
-  <div class="row">
+<div class="container">
+  <div class="row border-bottom border-dark">
     <div class="col-md-8">
-      <h2>投稿詳細</h2>
+      <h2 class="m-5">投稿詳細</h2>
       <table class="ml-5">
         <% if @user.profile_image.attached? %>
           <tr>
-            <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
-            <th><h2 class="ml-5"><%= @user.name %></h2></th>
+            <th width="120"><%= image_tag @user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+            <th><h2><%= @user.name %></h2></th>
           </tr>
         <% else %>
           <tr>
-            <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
-            <th><h2 class="ml-5"><%= @user.name %></h2></th>
+            <th width="120"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+            <th><h2><%= @user.name %></h2></th>
           </tr>
         <% end %>
-        <tr>
-          <th class="p-5"><%= safe_join(@post.text.split("\n"),tag(:br)) %></th>
-        </tr>
-        <tr>
-          <th>
-            <%= render "public/posts/favorite", post: @post %>
-          </th>
-        </tr>
       </table>
       <table>
-      <tbody>
+        <tr>
+          <th width="100"></th>
+          <th class="p-5"><%= safe_join(@post.text.split("\n"),tag(:br)) %></th>
+        </tr>
+      </table>
+      <div class="text-right p-3">
+        <div id="favorite_btn_<%= @post.id %>">
+          <b><%= render 'public/posts/favorite', post: @post %></b>
+        </div>
+        <div>
+          <%= render "public/comments/comment_count", post: @post %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4" id="comment_form">
+    <%= render "public/comments/comment_form", comment: @comment, post: @post %>
+  </div>
+  <div class="row border-top border-dark w-100">
+    <table>
+      <tbody class="pl-3">
         <% @post.comments.each do |comment| %>
           <% if @user.profile_image.attached? %>
             <tr>
-              <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
+              <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "80x80" %></th>
               <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
             </tr>
           <% else %>
             <tr>
-              <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
+              <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
               <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
             </tr>
           <% end %>
-            <div id="comment_area">
-              <%= render "public/comments/comment", comment: comment %>
-            </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-md-4" id="comment_form">
-      <%= render "public/comments/comment_form", comment: @comment, post: @post %>
-    </div>
+          <div id="comment_area">
+            <%= render "public/comments/comment", comment: comment %>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

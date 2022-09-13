@@ -12,20 +12,20 @@
       </tr>
     <% end %>
     <tr>
-      <th id='follow-btn_#{ user.id }'>
+      <th class="pt-3 pb-3" id='follow-btn_<%= @user.id %>'>
         <%= render "public/relationships/follow_btn", user: @user %>
       </th>
       <th></th>
     </tr>
     <tr>
       <th>フォロー:</th>
-      <th id='following-count_#{ user.id }'>
+      <th id='following-count_<%= @user.id %>'>
         <%= link_to "#{ @user.followings.count }", public_user_followings_path(@user), remote: true %>
       </th>
     </tr>
     <tr>
       <th>フォロワー:</th>
-      <th id='following-count_#{ user.id }'>
+      <th id='following-count_<%= @user.id %>'>
         <%= link_to "#{ @user.followers.count }", public_user_followers_path(@user), remote: true %>
       </th>
     </tr>
@@ -65,13 +65,18 @@
               <th class="p-5 text"><%= safe_join(post.text.split("\n"),tag(:br)) %></th>
             </tr>
           </table>
-          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= post.id %>">
-            <b><%= render 'public/posts/favorite', post: post %></b>
+          <div class="border-bottom border-dark w-100 text-right p-3">
+            <div id="favorite_btn_<%= post.id %>">
+              <b><%= render 'public/posts/favorite', post: post %></b>
+            </div>
+            <div>
+              <%= render "public/comments/comment_count", post: @post %>
+            </div>
           </div>
         <% end %>
       <% end %>
     </div>
-    <div class="tab-pane" id="tab-favorite">
+    <div class="tab-pane mt-5" id="tab-favorite">
       <% @favorite_posts.each do |post|%>
         <%= link_to public_post_path(post), class: "post-link" do %>
           <table class="mt-2 ml-5">
@@ -93,8 +98,14 @@
               <th class="p-5 text"><%= safe_join(post.text.split("\n"),tag(:br)) %></th>
             </tr>
           </table>
-          <div class="border-bottom border-dark w-100 text-right p-3" id="favorite_btn_<%= post.id %>">
-            <b><%= render 'public/posts/favorite', post: post %></b>
+          <div class="border-bottom border-dark w-100 text-right p-3">
+            <div id="favorite_btn_<%= post.id %>">
+              <b><%= render 'public/posts/favorite', post: post %></b>
+            </div>
+            <div>
+              <i class="far fa-comment"></i>
+              <b><%= @post.comments.count %></b>
+            </div>
           </div>
         <% end %>
       <% end %>
