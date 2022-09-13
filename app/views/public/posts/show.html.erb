@@ -17,8 +17,10 @@
       </table>
       <table>
         <tr>
-          <th width="100"></th>
           <th class="p-5"><%= safe_join(@post.text.split("\n"),tag(:br)) %></th>
+        </tr>
+        <tr>
+          <th class="pl-5"><%= image_tag @post.post_image, size: "600x300" %></th>
         </tr>
       </table>
       <div class="text-right p-3">

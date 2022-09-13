@@ -36,10 +36,10 @@
   </table>
   <ul class="nav nav-tabs nav-fill">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#tab-post">過去の投稿</a>
+      <a class="nav-link active text-dark" data-toggle="tab" href="#tab-post">過去の投稿</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#tab-favorite">いいね一覧</a>
+      <a class="nav-link text-dark" data-toggle="tab" href="#tab-favorite">いいね一覧</a>
     </li>
   </ul>
   <div class="tab-content">
@@ -61,8 +61,10 @@
           </table>
           <table>
             <tr>
-              <th width="120"></th>
               <th class="p-5 text"><%= safe_join(post.text.split("\n"),tag(:br)) %></th>
+            </tr>
+            <tr>
+              <th class="pl-5"><%= image_tag post.post_image, size: "600x300" if post.post_image.attached? %></th>
             </tr>
           </table>
           <div class="border-bottom border-dark w-100 text-right p-3">
