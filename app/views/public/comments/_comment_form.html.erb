@@ -1,0 +1,6 @@
+<%= form_with model: comment, url: public_post_comments_path(post), method: :post, remote: true do |f| %>
+  <div class="m-5 p-5">
+    <%= f.text_area :comment, placeholder: "コメントしよう！", size: "25x10" %>
+    <%= f.submit "コメントする", class: "btn btn-md btn-warning" %>
+  </div>
+<% end %>
