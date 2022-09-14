@@ -2,15 +2,15 @@
     <div class="border-top border-dark w-100 p-5">
       <% post.comments.each do |comment| %>
         <table class="p-5 border-bottom border-dark w-100 pb-3 mb-3">
-          <% if user.profile_image.attached? %>
+          <% if comment.user.profile_image.attached? %>
             <tr>
-              <th><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-              <th><h2 class="ml-5"><b><%= user.name %></b></h2></th>
+              <th><%= image_tag comment.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+              <th><h2 class="ml-5"><b><%= post.user.name %></b></h2></th>
             </tr>
           <% else %>
             <tr>
               <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
-              <th><h2 class="ml-5"><b><%= user.name %></b></h2></th>
+              <th><h2 class="ml-5"><b><%= comment.user.name %></b></h2></th>
             </tr>
           <% end %>
           <tr>
