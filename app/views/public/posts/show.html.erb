@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row border-bottom border-dark">
+  <div class="row">
     <div class="col-md-8">
       <h2 class="m-5">投稿詳細</h2>
       <table class="ml-5">
@@ -29,32 +29,15 @@
         </div>
         <div>
           <%= render "public/comments/comment_count", post: @post %>
+        </div>
       </div>
     </div>
+    <div class="col-md-4" id="comment_form">
+      <%= render "public/comments/comment_form", comment: @comment, post: @post %>
+    </div>
   </div>
-  <div class="col-md-4" id="comment_form">
-    <%= render "public/comments/comment_form", comment: @comment, post: @post %>
-  </div>
-  <div class="border-top border-dark w-100">
-    <table>
-      <tbody class="pl-3">
-        <% @post.comments.each do |comment| %>
-          <% if @user.profile_image.attached? %>
-            <tr>
-              <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-              <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
-            </tr>
-          <% else %>
-            <tr>
-              <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
-              <th><h2 class="ml-5"><b><%= @user.name %></b></h2></th>
-            </tr>
-          <% end %>
-          <div id="comment_area">
-            <%= render "public/comments/comment", comment: comment %>
-          </div>
-        <% end %>
-      </tbody>
-    </table>
+  </table>
+  <div id="comment_area">
+    <%= render "public/comments/comment", comment: @comment, user: @user, post: @post %>
   </div>
 </div>

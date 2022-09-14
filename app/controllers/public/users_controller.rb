@@ -2,7 +2,6 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @post = Post.find(params[:id])
     @posts = Post.where(user_id: @user.id).includes(:user).order(created_at: :desc)
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)

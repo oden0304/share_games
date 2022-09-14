@@ -1,4 +1,26 @@
-<tr>
-  <td><%= comment.comment %></td>
-  <td><%= link_to "削除", public_post_comment_path(comment.id, comment.post.id), method: :delete, remote: true %></td>
-</tr>
+<% if post.comments.present? %>
+    <div class="border-top border-dark w-100 p-5">
+      <% post.comments.each do |comment| %>
+        <table class="p-5 border-bottom border-dark w-100 pb-3 mb-3">
+          <% if user.profile_image.attached? %>
+            <tr>
+              <th><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+              <th><h2 class="ml-5"><b><%= user.name %></b></h2></th>
+            </tr>
+          <% else %>
+            <tr>
+              <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+              <th><h2 class="ml-5"><b><%= user.name %></b></h2></th>
+            </tr>
+          <% end %>
+          <tr>
+            <th width="120"></th>
+            <th class="pt-3 pb-5"><%= comment.comment %></th>
+          </tr>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center w-100 border-top border-dark pt-5">
+      <b>コメントはありません。</b>
+    </div>
+  <% end %>
