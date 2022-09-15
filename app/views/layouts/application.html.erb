@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
   </head>
   <body class="body-bg-image">
     <header>
@@ -33,7 +34,7 @@
                <%= link_to "マイページ", public_user_path(current_user), class: "text-white" %>
             </li>
           </ul>
-          <ul class="list-unstyled pt-3">
+            <ul class="list-unstyled pt-3">
             <li class="nav-item ml-4">
               <%= link_to "つぶやく", new_public_post_path, class: "text-white" %>
             </li>
@@ -50,7 +51,38 @@
           </ul>
           <ul class="list-unstyled pt-4">
             <li class="nav-item ml-4">
-              <%= form_tag public_posts_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+              <%= form_tag public_posts_path, :method => 'get' do %>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search", :name => nil %>
+                </p>
+              <% end %>
+            </li>
+          </ul>
+        <% elsif admin_signed_in? %>
+          <ul class="ml-auto list-unstyled pt-3">
+            <li class="nav-item active">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="ml-auto list-unstyled pt-3">
+            <li class="nav-item active">
+              <%= link_to "ユーザー一覧", admin_root_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
+              <%= link_to "タイムライン", public_posts_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
+              <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="list-unstyled pt-4">
+            <li class="nav-item ml-4">
+              <%= form_tag public_posts_path, :method => 'get' do %>
                 <p>
                   <%= text_field_tag :search, params[:search] %>
                   <%= submit_tag "Search", :name => nil %>

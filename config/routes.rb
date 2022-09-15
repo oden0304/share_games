@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   
   namespace :public do
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get :favorites
     end
   end
-  resources :posts, only: [:new, :index, :show, :create, :update] do
+  resources :posts, only: [:new, :index, :show, :create, :destroy] do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end

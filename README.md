@@ -36,7 +36,8 @@
 - IDE：Cloud9
 
 ## 使用素材
-GAHAG様　https://gahag.net/000770-rpg-game/
+GAHAG　https://gahag.net/000770-rpg-game/
+Unsplash　https://unsplash.com/ja
 
 ## 注意事項
 ゲームの画像やイラスト、キャプチャーなどに関する著作権がありますので<br>

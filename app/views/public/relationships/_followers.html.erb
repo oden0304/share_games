@@ -1,3 +1,4 @@
+<div class="nes-container is-rounded is-dark">
 <table class="m-5">
   <% if user.profile_image.attached? %>
     <tr>
@@ -18,9 +19,13 @@
         <% else %>
           <%= link_to "フォローする", public_user_relationships_path(user.id), method: :post, class: "btn btn-primary", remote: true %>
         <% end %>
-        <%= link_to "編集", edit_public_user_path(user), class: "btn btn-success mr-auto" %>
+        <% if user.name != "guestuser" %>
+          <%= link_to "編集", edit_public_user_path(user), class: "btn btn-success mr-auto" %>
+        <% end %>
       <% else %>
-        <%= link_to "編集", edit_public_user_path(user), class: "btn btn-success mr-auto" %>
+        <% if user.name != "guestuser" %>
+          <%= link_to "編集", edit_public_user_path(user), class: "btn btn-success mr-auto" %>
+        <% end %>
       <% end %>
     </th>
     <th></th>
@@ -39,6 +44,11 @@
   </tr>
   <tr>
     <th class="align-top">introduction:</th>
-    <th class="text"><%= safe_join(user.introduction.to_s.split("\n"),tag(:br)) %></th>
+    <th class="text">
+      
+        <%= safe_join(user.introduction.to_s.split("\n"),tag(:br)) %>
+      
+    </th>
   </tr>
 </table>
+</div>

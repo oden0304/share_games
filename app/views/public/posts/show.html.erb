@@ -30,6 +30,11 @@
         <div>
           <%= render "public/comments/comment_count", post: @post %>
         </div>
+        <% if @user == current_user %>
+          <div>
+            <%= link_to "つぶやきを削除する", public_post_path(@post), method: :delete, class: "btn btn-md btn-danger", data: { confirm: "【確認】投稿を削除してよろしいですか？" } %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="col-md-4" id="comment_form">

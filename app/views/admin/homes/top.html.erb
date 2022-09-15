@@ -1,2 +1,20 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <h3 class="m-5">ユーザー一覧</h3>
+  <% @users.each do |user| %>
+    <%= link_to public_user_path(user), class: "post-link" do %>
+      <table class="mt-4 ml-5">
+        <% if user.profile_image.attached? %>
+          <tr>
+            <th class="pr-3"><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+            <th><h4><b><%= user.name %></b></h4></th>
+          </tr>
+        <% else %>
+          <tr>
+            <th class="pr-3"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+            <th><h4><b><%= user.name %></h4></b></th>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  <% end %>
+</div>

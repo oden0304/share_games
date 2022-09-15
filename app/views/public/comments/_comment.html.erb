@@ -17,6 +17,9 @@
             <th width="120"></th>
             <th class="pt-3 pb-5"><%= comment.comment %></th>
           </tr>
+          <% if current_admin %>
+            <th class="mb-5"><%= link_to "削除", public_post_comment_path(comment.id), data: { confirm: "【確認】コメントを削除してよろしいですか？" }, method: :delete, remote: true, class: "btn btn-md btn-danger" %></th>
+          <% end %>
       <% end %>
     </div>
   <% else %>

@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  
   def new
     @post = Post.new
   end
@@ -24,7 +25,10 @@ class Public::PostsController < ApplicationController
     end
   end
   
-  def update
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to public_user_path(@post.user)
   end
   
   private
