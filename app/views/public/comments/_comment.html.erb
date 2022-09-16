@@ -1,7 +1,7 @@
 <% if post.comments.present? %>
-    <div class="border-top border-dark w-100 p-5">
+    <div class="border-top border-white w-100 p-5">
       <% post.comments.each do |comment| %>
-        <table class="p-5 border-bottom border-dark w-100 pb-3 mb-3">
+        <table class="p-5 border-bottom border-white w-100 pb-3 mb-3">
           <% if comment.user.profile_image.attached? %>
             <tr>
               <th><%= image_tag comment.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
@@ -23,7 +23,7 @@
       <% end %>
     </div>
   <% else %>
-    <div class="text-center w-100 border-top border-dark pt-5">
+    <div class="text-center w-100 border-top border-white pt-5">
       <b>コメントはありません。</b>
     </div>
   <% end %>

@@ -1,13 +1,13 @@
-<div class="container border">
+<div class="container nes-container is-rounded is-dark mx-auto">
   <div id="follow-btn_<%= @user.id %>">
     <%= render "public/relationships/followers", user: @user %>
   </div>
   <ul class="nav nav-tabs nav-fill">
     <li class="nav-item">
-      <a class="nav-link active text-dark" data-toggle="tab" href="#tab-post">過去の投稿</a>
+      <a class="nav-link active" data-toggle="tab" href="#tab-post"><b>過去の投稿</b></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-dark" data-toggle="tab" href="#tab-favorite">いいね一覧</a>
+      <a class="nav-link" data-toggle="tab" href="#tab-favorite"><b>いいね一覧</b></a>
     </li>
   </ul>
   <div class="tab-content">
@@ -35,9 +35,9 @@
               <th class="pl-5"><%= image_tag post.post_image, size: "600x300" if post.post_image.attached? %></th>
             </tr>
           </table>
-          <div class="border-bottom border-dark w-100 text-right p-3">
+          <div class="border-bottom border-white w-100 text-right p-3">
             <% if current_admin %>
-              <div class="mb-5">
+              <div>
                 <%= link_to "削除", public_user_path(@user), method: :delete, class: "btn btn-md btn-danger" %>
               </div>
             <% end %>
@@ -75,7 +75,7 @@
               <th class="pl-5"><%= image_tag post.post_image, size: "600x300" if post.post_image.attached? %></th>
             </tr>
           </table>
-          <div class="border-bottom border-dark w-100 text-right p-3">
+          <div class="border-bottom border-white w-100 text-right p-3">
             <div id="favorite_btn_<%= post.id %>">
               <b><%= render 'public/posts/favorite', post: post %></b>
             </div>
