@@ -29,16 +29,22 @@
     </th>
     <th></th>
   </tr>
+  <th>総レベル:</th>
+    <th id='following-count_<%= user.id %>'>
+      Lv. <%= user.followings.count + user.followers.count %>
+    </th>
+  </tr>
+  <tr>
   <tr>
     <th>フォロー:</th>
     <th id='following-count_<%= user.id %>'>
-      <%= link_to "#{ user.followings.count }", public_user_followings_path(user) %>
+      Lv. <%= link_to "#{ user.followings.count }", public_user_followings_path(user) %>
     </th>
   </tr>
   <tr>
     <th>フォロワー:</th>
     <th id='following-count_<%= user.id %>'>
-      <%= link_to "#{ user.followers.count }", public_user_followers_path(user) %>
+      Lv. <%= link_to "#{ user.followers.count }", public_user_followers_path(user) %>
     </th>
   </tr>
   <tr>

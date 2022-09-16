@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   get "homes/terms" => "homes#terms"
+  get "follow_index" => "posts#follow_index"
   
   
   end

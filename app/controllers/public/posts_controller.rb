@@ -9,6 +9,10 @@ class Public::PostsController < ApplicationController
     #ViewのFormで取得したパラメータをモデルに渡す
     @posts = Post.search(params[:search])
   end
+  
+  def follow_index
+    @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
+  end
 
   def show
     @post = Post.find(params[:id])
