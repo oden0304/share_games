@@ -7,7 +7,9 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:post_id]).destroy
+    Comment.find(params[:id]).destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.new
   end
   
   private

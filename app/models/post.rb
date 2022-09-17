@@ -8,9 +8,18 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
   
-  def self.search(search) #self.でクラスメソッドとしている
-    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
-      Post.where(['text LIKE ?', "%#{search}%"])
+  def self.search(search, type) #self.でクラスメソッドとしている
+    if search # Controllerから渡されたパラメータが!= nilの場合は、textカラムを部分一致検索
+      if type ==="投稿"
+        Post.where(['text LIKE ?', "%#{search}%"])
+      elsif type === "ユーザー"
+        user = User.where(['name LIKE ?', "%#{search}%"]).first
+        if user
+          Post.where(['user_id LIKE ?', user.id])
+        else 
+          Post.all
+        end
+      end
     else
       Post.all #全て表示。
     end

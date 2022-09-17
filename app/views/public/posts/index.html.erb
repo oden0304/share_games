@@ -1,6 +1,6 @@
 <div class="container nes-container is-rounded is-dark mx-auto">
   <% @posts.each do |post| %>
-    <%= link_to public_post_path(post), class: "post-link" do %>
+    <%= link_to public_post_path(post), class: "link" do %>
       <% if post.user.profile_image.attached? %>
         <table class="w-100">
           <tr>

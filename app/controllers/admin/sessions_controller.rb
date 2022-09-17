@@ -9,9 +9,18 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    # binding.pry
+    admin = Admin.find_by(email: params[:admin][:email])
+    if admin && admin.valid_password?(params[:admin][:password])
+      self.resource = admin
+      sign_in(resource_name, resource)
+      sign_in User.guest
+      yield resource if block_given?
+      respond_with resource, location: after_sign_in_path_for(resource)
+    end
+    # super
+  end
 
   # DELETE /resource/sign_out
   # def destroy

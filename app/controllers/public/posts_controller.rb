@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
     #ViewのFormで取得したパラメータをモデルに渡す
-    @posts = Post.search(params[:search])
+    @posts = Post.search(params[:search], params[:type])
   end
   
   def follow_index

@@ -23,7 +23,38 @@
         </strong>
       </h2>
       <div class="collapse navbar-collapse mr-5">
-        <% if user_signed_in? %>
+        <% if admin_signed_in? %>
+          <ul class="ml-auto list-unstyled pt-3">
+            <li class="nav-item active">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="ml-auto list-unstyled pt-3">
+            <li class="nav-item active">
+              <%= link_to "ユーザー一覧", admin_root_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
+              <%= link_to "タイムライン", public_posts_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="list-unstyled pt-3">
+            <li class="nav-item ml-4">
+              <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
+            </li>
+          </ul>
+          <ul class="list-unstyled pt-4">
+            <li class="nav-item ml-4">
+              <%= form_tag public_posts_path, :method => 'get' do %>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search", :name => nil %>
+                </p>
+              <% end %>
+            </li>
+          </ul>
+        <% elsif user_signed_in? %>
           <ul class="ml-auto list-unstyled pt-3">
             <li class="nav-item active">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
@@ -58,43 +89,17 @@
             <li class="nav-item ml-4">
               <%= form_tag public_posts_path, :method => 'get' do %>
                 <p>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>
+                  <select name="type">
+                    <option>ユーザー</option>
+                    <option>投稿</option>
+                  </select>
+                  <%= text_field_tag :search, params[:search], :placeholder => "キーワード検索" %>
+                  <%= submit_tag "検索", :name => nil %>
                 </p>
               <% end %>
             </li>
           </ul>
-        <% elsif admin_signed_in? %>
-          <ul class="ml-auto list-unstyled pt-3">
-            <li class="nav-item active">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="ml-auto list-unstyled pt-3">
-            <li class="nav-item active">
-              <%= link_to "ユーザー一覧", admin_root_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "タイムライン", public_posts_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-4">
-            <li class="nav-item ml-4">
-              <%= form_tag public_posts_path, :method => 'get' do %>
-                <p>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>
-                </p>
-              <% end %>
-            </li>
-          </ul>
+        
         <% else %>
           <ul class="ml-auto list-unstyled pt-3">
             <li class="nav-item ml-4">
