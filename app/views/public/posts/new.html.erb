@@ -1,8 +1,13 @@
 <div class="container nes-container is-rounded is-dark mx-auto">
-  <%= form_with model: @post, url: public_posts_path, method: :post do |f| %>
-    <%= f.label :post_image, "画像を選択する", class: "edit-btn"%>
-    <%= f.file_field :post_image, accept: "image/*", class: "edit-image" %>
-    <%= f.text_area :text, size: "100x20"%>
-    <%= f.submit "つぶやく", class: "btn btn-lg btn-warning mb-5 ml-3" %>
+  <% if current_user.name != "guestuser" %>
+    <%= form_with model: @post, url: public_posts_path, method: :post do |f| %>
+      <%= f.label :post_image, "画像を選択する", class: "edit-btn"%>
+      <%= f.file_field :post_image, accept: "image/*", class: "edit-image" %>
+      <%= f.text_area :text, size: "100x20"%>
+      <%= f.submit "つぶやく", class: "btn btn-lg btn-warning mb-5 ml-3" %>
+    <% end %>
+  <% else %>
+    <p>ゲストログインの場合つぶやき機能はご利用できません。ご利用の場合は</p>
+    <p>一度<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>してから、再度ログインまたは新規登録を行なってください。</p>
   <% end %>
 </div>

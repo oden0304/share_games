@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-8">
       <h2 class="m-5">投稿詳細</h2>
+      <%= link_to public_user_path(@user), class: "link" do %>
       <table class="ml-5">
         <% if @user.profile_image.attached? %>
           <tr>
@@ -15,6 +16,7 @@
           </tr>
         <% end %>
       </table>
+      <% end %>
       <table>
         <tr>
           <th class="p-5"><%= safe_join(@post.text.split("\n"),tag(:br)) %></th>

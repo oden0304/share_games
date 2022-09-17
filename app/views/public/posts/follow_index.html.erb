@@ -1,4 +1,7 @@
 <div class="container nes-container is-rounded is-dark mx-auto">
+  <% unless @feeds.present? %>
+    <p class="text-center">投稿はありません。</p>
+  <% end %>
   <% @feeds.each do |post| %>
     <%= link_to public_post_path(post), class: "post-link" do %>
       <% if post.user.profile_image.attached? %>
