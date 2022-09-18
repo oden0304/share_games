@@ -21,7 +21,7 @@
           <th class="p-5"><%= safe_join(@post.text.split("\n"),tag(:br)) %></th>
         </tr>
         <tr>
-          <th class="pl-5"><%= image_tag @post.post_image, size: "600x300" if @post.post_image.attached? %></th>
+          <th class="pl-5"><%= image_tag @post.post_image, size: "600x500" if @post.post_image.attached? %></th>
         </tr>
       </table>
       <div class="text-right p-3">
