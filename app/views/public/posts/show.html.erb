@@ -1,9 +1,8 @@
 <div class="container nes-container is-rounded is-dark mx-auto">
   <div class="row">
     <div class="col-md-8">
-      <h2 class="m-5">投稿詳細</h2>
       <%= link_to public_user_path(@user), class: "link" do %>
-      <table class="ml-5">
+      <table class="m-5">
         <% if @user.profile_image.attached? %>
           <tr>
             <th width="120"><%= image_tag @user.profile_image, class: "rounded-circle", size: "80x80" %></th>
@@ -32,7 +31,7 @@
         <div>
           <%= render "public/comments/comment_count", post: @post %>
         </div>
-        <% if @user == current_user %>
+        <% if @user == current_user || current_admin %>
           <div>
             <%= link_to "つぶやきを削除する", public_post_path(@post), method: :delete, class: "btn btn-md btn-danger", data: { confirm: "【確認】投稿を削除してよろしいですか？" } %>
           </div>

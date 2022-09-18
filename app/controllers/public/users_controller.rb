@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
+  before_action :correct_user,only: [:edit]
   
   def show
     @user = User.find(params[:id])
@@ -39,5 +40,12 @@ class Public::UsersController < ApplicationController
       redirect_to public_user_path(current_user)
     end
   end  
+  
+  def correct_user
+        @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to public_user_path(current_user)
+    end
+  end
 
 end

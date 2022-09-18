@@ -12,114 +12,117 @@
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
   </head>
   <body class="body-bg-image">
-    <header>
-    <nav class="navbar navbar-expand-sm mb-3 nes-container is-rounded is-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <h2>
-        <strong>
-          <%= link_to "Share Games", root_path, class: "text-white ml-5" %>
-        </strong>
-      </h2>
-      <div class="collapse navbar-collapse mr-5">
-        <% if admin_signed_in? %>
-          <ul class="ml-auto list-unstyled pt-3">
-            <li class="nav-item active">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="ml-auto list-unstyled pt-3">
-            <li class="nav-item active">
-              <%= link_to "ユーザー一覧", admin_root_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "タイムライン", public_posts_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-4">
-            <li class="nav-item ml-4">
-              <%= form_tag public_posts_path, :method => 'get' do %>
-                <p>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>
-                </p>
-              <% end %>
-            </li>
-          </ul>
-        <% elsif user_signed_in? %>
-          <ul class="ml-auto list-unstyled pt-3">
-            <li class="nav-item active">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-               <%= link_to "マイページ", public_user_path(current_user), class: "text-white" %>
-            </li>
-          </ul>
+    <header class="fixed-top">
+      <nav class="navbar navbar-expand-sm mb-3 nes-container is-rounded is-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <h2>
+          <strong>
+            <%= link_to "Share Games", root_path, class: "text-white ml-5" %>
+          </strong>
+        </h2>
+        <div class="collapse navbar-collapse mr-5">
+          <% if admin_signed_in? %>
             <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "つぶやく", new_public_post_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "フォロータイムライン", public_follow_index_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "タイムライン", public_posts_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-4">
-            <li class="nav-item ml-4">
-              <%= form_tag public_posts_path, :method => 'get' do %>
-                <p>
-                  <select name="type">
-                    <option>ユーザー</option>
-                    <option>投稿</option>
-                  </select>
-                  <%= text_field_tag :search, params[:search], :placeholder => "キーワード検索" %>
-                  <%= submit_tag "検索", :name => nil %>
-                </p>
-              <% end %>
-            </li>
-          </ul>
-        
-        <% else %>
-          <ul class="ml-auto list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "ログイン", new_user_session_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "新規登録", new_user_registration_path, class: "text-white" %>
-            </li>
-          </ul>
-          <ul class="list-unstyled pt-3">
-            <li class="nav-item ml-4">
-              <%= link_to "利用規約", public_homes_terms_path, class: "text-white" %>
-            </li>
-          </ul>
-        <% end %>
-      </div>
-    </nav>
-  </header>
+              <li class="nav-item active ml-4">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item active ml-4">
+                <%= link_to "ユーザー一覧", admin_root_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "タイムライン", public_posts_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-4">
+              <li class="nav-item ml-4">
+                <%= form_tag public_posts_path, :method => 'get' do %>
+                  <p>
+                    <select name="type">
+                      <option>ユーザー</option>
+                      <option>つぶやき</option>
+                    </select>
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Search", :name => nil %>
+                  </p>
+                <% end %>
+              </li>
+            </ul>
+          <% elsif user_signed_in? %>
+            <ul class="ml-auto list-unstyled pt-3">
+              <li class="nav-item active">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                 <%= link_to "マイページ", public_user_path(current_user), class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+              <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "つぶやく", new_public_post_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "フォロータイムライン", public_follow_index_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "タイムライン", public_posts_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-4">
+              <li class="nav-item ml-4">
+                <%= form_tag public_posts_path, :method => 'get' do %>
+                  <p>
+                    <select name="type">
+                      <option>ユーザー</option>
+                      <option>つぶやき</option>
+                    </select>
+                    <%= text_field_tag :search, params[:search], :placeholder => "キーワード検索" %>
+                    <%= submit_tag "検索", :name => nil %>
+                  </p>
+                <% end %>
+              </li>
+            </ul>
+          <% else %>
+            <ul class="ml-auto list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "ログイン", new_user_session_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+            <ul class="list-unstyled pt-3">
+              <li class="nav-item ml-4">
+                <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

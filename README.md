@@ -36,8 +36,7 @@
 - IDE：Cloud9
 
 ## 使用素材
-GAHAG　https://gahag.net/000770-rpg-game/
-Unsplash　https://unsplash.com/ja
+背景素材フリードットコム　https://www.haikei-free.com/black/0040.php
 
 ## 注意事項
 ゲームの画像やイラスト、キャプチャーなどに関する著作権がありますので<br>

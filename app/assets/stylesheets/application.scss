@@ -20,9 +20,11 @@
 }
  
 .body-bg-image {
-  background-image: image-url("134747124054213113689_BG10a_80");
+  background-image: image-url("black0040");
+  background-attachment: fixed;
   height: 800px;
   background-size: cover;
+  padding-top: 150px;
 }
 
 .edit-image {
@@ -46,10 +48,6 @@
   cursor: pointer;
   cursor: hand;
   background-color: #228B22;
-}
-
-.container {
-  overflow: scroll;
 }
 
 .heart {

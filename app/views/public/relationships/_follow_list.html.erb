@@ -1,17 +1,23 @@
-<% users.each do |user| %>
-  <%= link_to public_user_path(user.id), class: "post-link" do %>
-    <table class="mt-4 ml-5">
-      <% if user.profile_image.attached? %>
-        <tr>
-          <th class="pr-3"><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-          <th><h4><b><%= user.name %></b></h4></th>
-        </tr>
-      <% else %>
-        <tr>
-          <th class="pr-3"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
-          <th><h4><b><%= user.name %></h4></b></th>
-        </tr>
-      <% end %>
-    </table>
+<% if users.empty? %>
+  <div class="text-center">
+    ユーザーはいません。
+  </div>
+<% else %>
+  <% users.each do |user| %>
+    <%= link_to public_user_path(user.id), class: "link" do %>
+      <table class="mt-4 ml-5">
+        <% if user.profile_image.attached? %>
+          <tr>
+            <th class="pr-3"><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+            <th><h4><b><%= user.name %></b></h4></th>
+          </tr>
+        <% else %>
+          <tr>
+            <th class="pr-3"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
+            <th><h4><b><%= user.name %></h4></b></th>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
   <% end %>
 <% end %>

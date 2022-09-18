@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   
   def self.search(search, type) #self.でクラスメソッドとしている
     if search # Controllerから渡されたパラメータが!= nilの場合は、textカラムを部分一致検索
-      if type ==="投稿"
+      if type ==="つぶやき"
         Post.where(['text LIKE ?', "%#{search}%"])
       elsif type === "ユーザー"
         user = User.where(['name LIKE ?', "%#{search}%"]).first

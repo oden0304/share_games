@@ -18,7 +18,7 @@
         <% else %>
           <%= link_to "フォローする", public_user_relationships_path(user.id), method: :post, class: "btn btn-primary", remote: true %>
         <% end %>
-        <% if user.name != "guestuser" %>
+        <% if user == current_user %>
           <%= link_to "編集", edit_public_user_path(user), class: "btn btn-success mr-auto" %>
         <% end %>
       <% else %>
