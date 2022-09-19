@@ -11,14 +11,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
   </head>
-  <body class="margin">
-    <!--<section class="hero">-->
-    <!--<div class="video-box overlay">-->
-    <!--  <video class="video" muted autoplay loop playsinline>-->
-    <!--    <source src="videos/top.mp4" type="video/mp4">-->
-    <!--  </video>-->
-    <!--</div>-->
-    <!--<div class="text-box">-->
+  <body class="body-bg-image">
+    <section class="hero">
+    <div class="video-box overlay">
+      <video class="video" muted autoplay loop playsinline>
+        <source src="videos/top.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="text-box">
     <header class="fixed-top">
       <nav class="navbar navbar-expand-sm mb-3 nes-container is-rounded is-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,7 +133,7 @@
       </nav>
     </header>
     <%= yield %>
-    <!--</div>-->
-  <!--</section>-->
+    </div>
+  </section>
   </body>
 </html>
