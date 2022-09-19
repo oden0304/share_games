@@ -26,14 +26,16 @@
         </button>
         <h2>
           <strong>
-            <%= link_to "Share Games", root_path, class: "text-white ml-5" %>
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.png', size: "400x100"%>
+            <% end %>
           </strong>
         </h2>
         <div class="collapse navbar-collapse mr-5">
           <% if admin_signed_in? %>
             <ul class="list-unstyled pt-3">
               <li class="nav-item active ml-4">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light rounded-pill font-weight-bold" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
             </ul>
             <ul class="list-unstyled pt-3">
@@ -43,7 +45,7 @@
             </ul>
             <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
-                <%= link_to "タイムライン", public_posts_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+                <%= link_to "タイムライン", public_posts_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
             </ul>
             <ul class="list-unstyled pt-3">
@@ -68,7 +70,7 @@
           <% elsif user_signed_in? %>
             <ul class="ml-auto list-unstyled pt-3">
               <li class="nav-item active">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light rounded-pill font-weight-bold" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
             </ul>
             <ul class="list-unstyled pt-3">
@@ -78,7 +80,7 @@
             </ul>
               <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
-                <%= link_to "つぶやく", new_public_post_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+                <%= link_to "つぶやく", new_public_post_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
             </ul>
             <ul class="list-unstyled pt-3">
@@ -88,7 +90,7 @@
             </ul>
             <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
-                <%= link_to "タイムライン", public_posts_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+                <%= link_to "タイムライン", public_posts_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
             </ul>
             <ul class="list-unstyled pt-3">
@@ -113,7 +115,7 @@
           <% else %>
             <ul class="ml-auto list-unstyled pt-3">
               <li class="nav-item ml-4">
-                <%= link_to "ログイン", new_user_session_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+                <%= link_to "ログイン", new_user_session_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
             </ul>
             <ul class="list-unstyled pt-3">
@@ -123,7 +125,7 @@
             </ul>
             <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
-                <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-light rounded-pill font-weight-bold" %>
+                <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
             </ul>
           <% end %>
@@ -131,7 +133,7 @@
       </nav>
     </header>
     <%= yield %>
-    </div>
+    <!--</div>-->
   <!--</section>-->
-  <!--</body>-->
+  </body>
 </html>
