@@ -5,9 +5,11 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    
     #ViewのFormで取得したパラメータをモデルに渡す
     @posts = Post.search(params[:search], params[:type])
+    @tags = Tag.all
+    @posts = params[:name].present? ? Tag.find(params[:name]).posts : Post.all.order(created_at: :desc)
   end
   
   def follow_index
@@ -38,6 +40,6 @@ class Public::PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:text, :post_image)
+    params.require(:post).permit(:text, :post_image, tag_ids: [])
   end
 end

@@ -1,5 +1,22 @@
 <div class="container nes-container is-rounded is-dark mx-auto my-bgc">
+  <%= form_tag public_posts_path, method: :get, class: 'boards__searchForm' do %>
+  <% @tags.each do |tag| %>
+    <div class="tag-box">
+      <%= link_to tag.name, public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill mt-2 mb-3" %>
+    </div>
+  <% end %>
+  <div class="tag-box">
+    <%= link_to "全てを表示", public_posts_path, class: "btn btn-success rounded-pill mt-2 mb-3 ml-5" %>
+  </div>
+  <div class="border-bottom border-white mb-5"></div>
   <% @posts.each do |post| %>
+    <% post.tags.each do |tag| %>
+      <div class="w-100 text-right mt-5">
+        <div class="btn btn-warning rounded-pill">
+          <%= tag.name %>
+        </div>
+      </div>
+    <% end %>
     <%= link_to public_post_path(post), class: "link" do %>
       <% if post.user.profile_image.attached? %>
         <table class="w-100">
@@ -55,5 +72,6 @@
         </div>
       <% end %>
     <% end %>
+  <% end %>
   <% end %>
 </div>

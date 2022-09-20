@@ -3,6 +3,13 @@
     <p class="text-center">投稿はありません。</p>
   <% end %>
   <% @feeds.each do |post| %>
+    <% post.tags.each do |tag| %>
+      <div class="w-100 text-right mt-5">
+        <div class="btn btn-warning rounded-pill">
+          <%= tag.name %>
+        </div>
+      </div>
+    <% end %>
     <%= link_to public_post_path(post), class: "link" do %>
       <% if post.user.profile_image.attached? %>
         <table class="w-100">

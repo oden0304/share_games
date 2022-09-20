@@ -121,3 +121,15 @@
   left: 0;
   width: 100%;
 }
+
+.tag-box {
+  display: inline;
+  a{
+      text-decoration: none;
+  }
+}
+
+.form-check {
+  float: left;
+  padding-left: 0 !important;
+}

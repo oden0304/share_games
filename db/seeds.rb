@@ -8,6 +8,18 @@
 ActiveStorage::AnalyzeJob.queue_adapter = :inline
 ActiveStorage::PurgeJob.queue_adapter = :inline
 
+# タグ
+Tag.create([
+    { name: 'RPG' },
+    { name: 'シューティング' },
+    { name: 'アクション'},
+    { name: 'アドベンチャー'},
+    { name: 'シミュレーション'},
+    { name: 'レーシング'},
+    { name: '音ゲー'},
+    { name: 'その他'},
+    ])
+
 #管理者用ログイン情報
 Admin.create!(
     email: 'admin@admin.com',
