@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     #ViewのFormで取得したパラメータをモデルに渡す
     @posts = Post.search(params[:search], params[:type])
     @tags = Tag.all
-    @posts = params[:name].present? ? Tag.find(params[:name]).posts : Post.all.order(created_at: :desc)
+    @posts = params[:name].present? ? Tag.find(params[:name]).posts.order(created_at: :desc) : Post.all.order(created_at: :desc)
   end
   
   def follow_index

@@ -37,23 +37,15 @@
               <li class="nav-item active ml-4">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item active ml-4">
                 <%= link_to "ユーザー一覧", admin_root_path, class: "btn btn-light rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                 <%= link_to "タイムライン", public_posts_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                 <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-light rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-4">
               <li class="nav-item ml-4">
                 <%= form_tag public_posts_path, :method => 'get' do %>
                   <p>
