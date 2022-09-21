@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 2022_09_20_041604) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "fovorite_id"
-    t.integer "genre_id"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
