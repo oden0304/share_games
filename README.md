@@ -1,4 +1,4 @@
-# share games
+# Share Games
 
 ## サイト概要
 
