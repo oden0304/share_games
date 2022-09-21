@@ -5,11 +5,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    
-    #ViewのFormで取得したパラメータをモデルに渡す
-    @posts = Post.search(params[:search], params[:type])
+    # タグ絞り込み↓                                                                            # 検索機能↓
+    @posts = params[:name].present? ? Tag.find(params[:name]).posts.order(created_at: :desc) : Post.search(params[:search], params[:type]).order(created_at: :desc)
     @tags = Tag.all
-    @posts = params[:name].present? ? Tag.find(params[:name]).posts.order(created_at: :desc) : Post.all.order(created_at: :desc)
   end
   
   def follow_index
