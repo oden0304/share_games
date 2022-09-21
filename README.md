@@ -36,9 +36,8 @@
 - IDE：Cloud9
 
 ## 使用素材
-背景素材フリードットコム　https://www.haikei-free.com/black/0040.php
-ぱくたそ　https://www.pakutaso.com/model.html
-ドット絵世界　http://yms.main.jp/
+- ぱくたそ　https://www.pakutaso.com/model.html
+- ドット絵世界　http://yms.main.jp/
 
 ## 注意事項
 ゲームの画像やイラスト、キャプチャーなどに関する著作権がありますので<br>
