@@ -3,9 +3,9 @@
     <div class="col-md-8">
       <% @post.tags.each do |tag| %>
         <div class="w-100 text-right mt-5">
-          <div class="btn btn-warning rounded-pill">
+          <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill" do %>
             <%= tag.name %>
-          </div>
+          <% end %>
         </div>
       <% end %>
       <%= link_to public_user_path(@user), class: "link" do %>
