@@ -1,15 +1,8 @@
 <table class="m-5">
-  <% if user.profile_image.attached? %>
-    <tr>
-      <th><%= image_tag user.profile_image, class: "rounded-circle", size: "200x200" %></th>
-      <th><h2 class="ml-5"><b><%= user.name %></b></h2></th>
-    </tr>
-  <% else %>
-    <tr>
-      <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
-      <th><h2 class="ml-5"><b><%= user.name %></b></h2></th>
-    </tr>
-  <% end %>
+  <tr>
+    <th><%= image_tag user.get_profile_image, class: "rounded-circle", size: "200x200" %></th>
+    <th><h2 class="ml-5"><b><%= user.name %></b></h2></th>
+  </tr>
   <tr>
     <th class="pt-3 pb-3" >
       <% unless user == current_user %>

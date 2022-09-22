@@ -22,12 +22,6 @@ class Public::UsersController < ApplicationController
     end
   end
   
-  def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to public_user_path(@post)
-  end
-  
   private
   
   def user_params

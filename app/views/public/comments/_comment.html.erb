@@ -2,23 +2,15 @@
     <div class="border-top border-white w-100 p-5">
       <% post.comments.each do |comment| %>
         <table class="p-5 border-bottom border-white w-100 pb-3 mb-3">
-          <% if comment.user.profile_image.attached? %>
-            <tr>
-              <th><%= image_tag comment.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-              <th><h2 class="ml-5"><b><%= post.user.name %></b></h2></th>
-            </tr>
-          <% else %>
-            <tr>
-              <th><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
-              <th><h2 class="ml-5"><b><%= comment.user.name %></b></h2></th>
-            </tr>
-          <% end %>
+          <tr>
+            <th><%= image_tag comment.user.get_profile_image, class: "rounded-circle", size: "80x80" %></th>
+            <th><h2 class="ml-5"><b><%= post.user.name %></b></h2></th>
+          </tr>
           <tr>
             <th width="120"></th>
             <th class="pt-3 pb-5"><%= comment.comment %></th>
           </tr>
           <% if current_admin %>
-            <% pp comment %>
             <th class="mb-5"><%= link_to "削除", public_post_comment_path(post.id,comment.id), data: { confirm: "【確認】コメントを削除してよろしいですか？" }, method: :delete, remote: true, class: "btn btn-md btn-danger" %></th>
           <% end %>
       <% end %>

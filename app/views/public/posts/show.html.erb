@@ -10,17 +10,10 @@
       <% end %>
       <%= link_to public_user_path(@user), class: "link" do %>
       <table class="m-5">
-        <% if @user.profile_image.attached? %>
-          <tr>
-            <th width="120"><%= image_tag @user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-            <th><h2><%= @user.name %></h2></th>
-          </tr>
-        <% else %>
-          <tr>
-            <th width="120"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
-            <th><h2><%= @user.name %></h2></th>
-          </tr>
-        <% end %>
+        <tr>
+          <th width="120"><%= image_tag @user.get_profile_image, class: "rounded-circle", size: "80x80" %></th>
+          <th><h2><%= @user.name %></h2></th>
+        </tr>
       </table>
       <% end %>
       <table>

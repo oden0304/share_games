@@ -2,17 +2,10 @@
 <% users.each do |user| %>
     <%= link_to public_user_path(user), class: "link" do %>
       <table class="mt-4 ml-5">
-        <% if user.profile_image.attached? %>
-          <tr>
-            <th class="pr-3"><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-            <th><h4><b><%= user.name %></b></h4></th>
-          </tr>
-        <% else %>
-          <tr>
-            <th class="pr-3"><%= image_tag "/assets/no_image", class: "rounded-circle", size: "80x80" %></th>
-            <th><h4><b><%= user.name %></h4></b></th>
-          </tr>
-        <% end %>
+        <tr>
+          <th class="pr-3"><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+          <th><h4><b><%= user.name %></b></h4></th>
+        </tr>
       <% end %>
     </table>
   <% end %>

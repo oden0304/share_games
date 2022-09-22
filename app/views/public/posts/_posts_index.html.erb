@@ -8,58 +8,30 @@
     </div>
   <% end %>
   <%= link_to public_post_path(post), class: "link" do %>
-    <% if post.user.profile_image.attached? %>
-      <table class="w-100">
-        <tr>
-          <th width="100"><%= image_tag post.user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-          <th>
-            <h3><b><%= post.user.name %></b></h3>
-          </th>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <th class="p-5"><h5><%= safe_join(post.text.split("\n"),tag(:br)) %></h5></th>
-        </tr>
-        <tr>
-          <th class="pl-5"><%= image_tag post.post_image, size: "600x500" if post.post_image.attached? %></th>
-        </tr>
-      </table>
-      <div class="border-bottom border-white w-100 text-right p-3 mb-5">
-        <div id="favorite_btn_<%= post.id %>">
-          <b><%= render 'public/posts/favorite', post: post %></b>
-        </div>
-        <div>
-          <i class="far fa-comment"></i>
-          <b><%= post.comments.count %></b>
-        </div>
+    <table class="w-100">
+      <tr>
+        <th width="100"><%= image_tag post.user.get_profile_image, class: "rounded-circle", size: "80x80" %></th>
+        <th>
+          <h3><b><%= post.user.name %></b></h3>
+        </th>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th class="p-5"><h5><%= safe_join(post.text.split("\n"),tag(:br)) %></h5></th>
+      </tr>
+      <tr>
+        <th class="pl-5"><%= image_tag post.post_image, size: "600x500" if post.post_image.attached? %></th>
+      </tr>
+    </table>
+    <div class="border-bottom border-white w-100 text-right p-3 mb-5">
+      <div id="favorite_btn_<%= post.id %>">
+        <b><%= render 'public/posts/favorite', post: post %></b>
       </div>
-    <% else %>
-      <table class="w-100">
-        <tr>
-          <th width="100"><%= image_tag 'no_image', class: "rounded-circle", size: "80x80" %></th>
-          <th>
-            <h3><b><%= post.user.name %></b></h3>
-          </th>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <th class="p-5"><h5><%= safe_join(post.text.split("\n"),tag(:br)) %></h5></th>
-        </tr>
-        <tr>
-          <th class="pl-5"><%= image_tag post.post_image, size: "600x500" if post.post_image.attached? %></th>
-        </tr>
-      </table>
-      <div class="border-bottom border-white w-100 text-right p-3 mb-5">
-        <div id="favorite_btn_<%= post.id %>">
-          <b><%= render 'public/posts/favorite', post: post %></b>
-        </div>
-        <div>
-          <i class="far fa-comment"></i>
-          <b><%= post.comments.count %></b>
-        </div>
+      <div>
+        <i class="far fa-comment"></i>
+        <b><%= post.comments.count %></b>
       </div>
-    <% end %>
+    </div>
   <% end %>
 <% end %>

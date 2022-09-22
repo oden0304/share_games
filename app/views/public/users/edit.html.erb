@@ -2,27 +2,15 @@
   <h2 class="mt-5 ml-3">プロフィール編集</h2>
   <%= form_with model: @user, url: public_user_path(@user) do |f| %>
     <table class="ml-5">
-      <% if @user.profile_image.attached? %>
-        <tr>
-          <th><%= image_tag @user.profile_image, class: "rounded-circle", size: "200x200" %></th>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :profile_image, "プロフィール画像を変更", class: "edit-btn" %>
-            <%= f.file_field :profile_image, accept: "image/*", class: "edit-image" %>
-          </th>
-        </tr>
-      <% else %>
-        <tr>
-          <th><%= image_tag 'no_image', class: "rounded-circle", size: "200x200" %></th>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :profile_image, "プロフィール画像を変更", class: "edit-btn" %>
-            <%= f.file_field :profile_image, accept: "image/*", class: "edit-image" %>
-          </th>
-        </tr>
-      <% end %>
+      <tr>
+        <th><%= image_tag @user.get_profile_image, class: "rounded-circle", size: "200x200" %></th>
+      </tr>
+      <tr>
+        <th>
+          <%= f.label :profile_image, "プロフィール画像を変更", class: "edit-btn" %>
+          <%= f.file_field :profile_image, accept: "image/*", class: "edit-image" %>
+        </th>
+      </tr>
     </table>
     <table class="table text-white">
       <tr>
