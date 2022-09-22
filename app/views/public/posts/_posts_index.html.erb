@@ -2,9 +2,9 @@
 <% posts.each do |post| %>
   <% post.tags.each do |tag| %>
     <div class="w-100 text-right mt-5">
-      <div class="btn btn-warning rounded-pill">
+      <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill" do %>
         <%= tag.name %>
-      </div>
+      <% end %>
     </div>
   <% end %>
   <%= link_to public_post_path(post), class: "link" do %>
