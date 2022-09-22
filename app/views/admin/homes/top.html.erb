@@ -4,7 +4,7 @@
     <%= link_to public_user_path(user), class: "link" do %>
       <table class="mt-4 ml-5">
         <tr>
-          <th class="pr-3"><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
+          <th class="pr-3"><%= image_tag user.get_profile_image, class: "rounded-circle", size: "80x80" %></th>
           <th><h4><b><%= user.name %></b></h4></th>
         </tr>
       <% end %>
