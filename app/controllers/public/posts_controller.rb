@@ -5,8 +5,8 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    # タグ絞り込み↓                                                                            # 検索機能↓
-    @posts = params[:name].present? ? Tag.find(params[:name]).posts.order(created_at: :desc) : Post.search(params[:search], params[:type]).order(created_at: :desc)
+    # タグ絞り込み↓
+    @posts = params[:name].present? ? Tag.find(params[:name]).posts.order(created_at: :desc) : Post.all.order(created_at: :desc)
     @tags = Tag.all
   end
   

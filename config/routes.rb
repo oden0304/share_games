@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'public/homes#top'
+  get '/search', to: 'searchs#search'
   
   namespace :admin do
     root to: 'homes#top'

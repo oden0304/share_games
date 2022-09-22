@@ -33,7 +33,7 @@
         </h2>
         <div class="collapse navbar-collapse mr-5">
           <% if admin_signed_in? %>
-            <ul class="list-unstyled pt-3">
+            <ul class="ml-auto list-unstyled pt-3 flex">
               <li class="nav-item active ml-4">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
@@ -60,62 +60,43 @@
               </li>
             </ul>
           <% elsif user_signed_in? %>
-            <ul class="ml-auto list-unstyled pt-3">
+            <ul class="ml-auto list-unstyled pt-3 flex">
               <li class="nav-item active">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                  <%= link_to "マイページ", public_user_path(current_user), class: "btn btn-light rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-              <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                 <%= link_to "つぶやく", new_public_post_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                 <%= link_to "フォロータイムライン", public_follow_index_path, class: "btn btn-light rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                 <%= link_to "タイムライン", public_posts_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                 <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-light rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-4">
-              <li class="nav-item ml-4">
-                <%= form_tag public_posts_path, :method => 'get' do %>
-                  <p>
-                    <select name="type">
-                      <option>ユーザー</option>
-                      <option>つぶやき</option>
-                    </select>
-                    <%= text_field_tag :search, params[:search], :placeholder => "キーワード検索" %>
-                    <%= submit_tag "検索", :name => nil %>
-                  </p>
+              <li class="nav-item ml-4 pt-1">
+                <% if user_signed_in? %>
+                  <%= form_tag(search_path, method: :get) do %>
+                    <%= select_tag 'model', options_for_select({ "ユーザー" => "user", "つぶやき" => "post" }) %>
+                    <%= text_field_tag 'content' %>
+                    <%= submit_tag '検索' %>
+                  <% end %>
                 <% end %>
               </li>
             </ul>
           <% else %>
-            <ul class="ml-auto list-unstyled pt-3">
+            <ul class="ml-auto list-unstyled pt-3 flex">
               <li class="nav-item ml-4">
                 <%= link_to "ログイン", new_user_session_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                 <%= link_to "新規登録", new_user_registration_path, class: "btn btn-light rounded-pill font-weight-bold" %>
               </li>
-            </ul>
-            <ul class="list-unstyled pt-3">
               <li class="nav-item ml-4">
                 <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
