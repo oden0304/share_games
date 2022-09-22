@@ -28,7 +28,7 @@
         <div id="favorite_btn_<%= @post.id %>">
           <b><%= render 'public/posts/favorite', post: @post %></b>
         </div>
-        <div>
+        <div id="comment_count">
           <%= render "public/comments/comment_count", post: @post %>
         </div>
         <% if @user == current_user || current_admin %>

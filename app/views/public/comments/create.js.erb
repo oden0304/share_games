@@ -1,2 +1,3 @@
 $('#comment_area').html("<%= j(render 'public/comments/comment', comment: @comment, user: @user, post: @post) %>");
 $('#comment_form').html("<%= j(render 'public/comments/comment_form', comment: @comment, post: @post) %>");
+$('#comment_count').html("<%= j(render 'public/comments/comment_count', post: @post) %>");
