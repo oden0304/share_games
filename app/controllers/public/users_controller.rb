@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-  before_action :ensure_guest_user, only: [:edit]
   before_action :correct_user,only: [:edit]
   
   def show
@@ -27,14 +26,7 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
-  
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to public_user_path(current_user)
-    end
-  end  
-  
+
   def correct_user
     @user = User.find(params[:id])
     unless @user == current_user

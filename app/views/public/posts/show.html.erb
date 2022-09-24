@@ -1,13 +1,16 @@
 <div class="container nes-container is-rounded is-dark mx-auto my-bgc">
-  <div class="row">
-    <div class="col-md-8">
+  <div class="row d-flex flex-row-reverse my-2 mr-2">
       <% @post.tags.each do |tag| %>
-        <div class="w-100 text-right mt-5">
-          <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill" do %>
+        <div>
+          <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill ml-3" do %>
             <%= tag.name %>
           <% end %>
         </div>
       <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      
       <%= link_to public_user_path(@user), class: "link" do %>
       <table class="m-5">
         <tr>
