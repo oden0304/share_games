@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
     @tags = Tag.all
   end
   
-  def follow_index
+  def follow_index               # 自分の投稿       # フォローした人の投稿
     @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
   end
 

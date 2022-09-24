@@ -33,7 +33,7 @@
         </div>
         <% if @user == current_user || current_admin %>
           <div>
-            <%= link_to "つぶやきを削除する", public_post_path(@post), method: :delete, class: "btn btn-md btn-danger", data: { confirm: "【確認】投稿を削除してよろしいですか？" } %>
+            <%= link_to "つぶやきを削除する", public_post_path(@post), method: :delete, class: "btn btn-md btn-danger", data: { confirm: "【確認】つぶやきを削除してよろしいですか？" } %>
           </div>
         <% end %>
       </div>

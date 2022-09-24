@@ -19,7 +19,7 @@
       </video>
     </div>
     <div class="text-box">
-    <header class="fixed-top">
+    <header class="fixed-top"> <!--ヘッダー固定-->
       <nav class="navbar navbar-expand-sm mb-3 nes-container is-rounded is-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -34,10 +34,10 @@
         <div class="collapse navbar-collapse mr-5">
           <% if admin_signed_in? %>
             <ul class="ml-auto list-unstyled pt-3 flex">
-              <li class="nav-item active ml-4">
+              <li class="nav-item ml-4">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
-              <li class="nav-item active ml-4">
+              <li class="nav-item ml-4">
                 <%= link_to "ユーザー一覧", admin_root_path, class: "btn btn-light rounded-pill font-weight-bold" %>
               </li>
               <li class="nav-item ml-4">
@@ -58,7 +58,7 @@
             </ul>
           <% elsif user_signed_in? %>
             <ul class="ml-auto list-unstyled pt-3 flex">
-              <li class="nav-item active">
+              <li class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold" %>
               </li>
               <li class="nav-item ml-4">
