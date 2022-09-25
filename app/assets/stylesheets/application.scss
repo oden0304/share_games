@@ -143,3 +143,12 @@
 .field_with_errors {
   display: contents;
 }
+
+.alert-warning {
+  background-color: rgba(33, 37, 41, 0.7) !important;
+  color: #fff !important;
+  border-color: red !important;
+  width: 215px;
+  padding-right: 10px !important;
+  margin-top: 30px;
+}

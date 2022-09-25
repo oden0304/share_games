@@ -12,6 +12,9 @@
           　<% end %>
           </div>
         <% end %>
+        <div class="pt-5">
+          <%= render "public/posts/error_messages", model: @post %>
+        </div>
       </div>
       <%= f.file_field :post_image, accept: "image/*", class: "edit-image" %>
       <%= f.text_area :text, size: "100x20"%>

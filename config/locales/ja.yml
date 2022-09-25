@@ -1,12 +1,14 @@
 ja:
   activerecord:
     models:
-      user:
+      user: ユーザー
     attributes:
       user:
         name: 名前
         password: パスワード
         agreement: 利用規約
+      post: 
+        text: 文字
 
     errors:
       messages:
