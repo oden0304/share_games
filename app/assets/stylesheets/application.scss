@@ -19,6 +19,15 @@
  box-sizing: border-box;
 }
 
+@font-face {
+	font-family: PixelMplus10-Regular;
+	src: url('/font/PixelMplus12-Regular.ttf') format("truetype");
+}
+
+.pixel-font {
+  font-family: PixelMplus10-Regular;
+}
+
 .edit-image {
   display: none;
 }

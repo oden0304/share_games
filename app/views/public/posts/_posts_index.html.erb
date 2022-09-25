@@ -1,2 +1,8 @@
 <div class="border-bottom border-white mb-5"></div>
-<%= render "public/postsmypage_post", posts: posts %>
+<% if posts.empty? %>
+  <div class="text-center">
+    <p><b><%= content %></b>に一致するつぶやきは見つかりませんでした。</p>
+  </div>
+<% else %>
+<%= render "public/posts/mypage_post", posts: posts %>
+<% end %>

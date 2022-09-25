@@ -1,9 +1,9 @@
 <div class="container nes-container is-rounded is-dark mx-auto my-bgc">
   <% if @model == 'user' %>
     <h3>【ユーザーの検索結果】検索ワード：<%= @content %></h3>
-    <%= render 'public/users/users_index', users: @records %>
+    <%= render 'public/users/users_index', users: @records, content: @content %>
   <% else @model == 'posts' %>
     <h3>【つぶやきの検索結果】検索ワード：<%= @content %></h3>
-      <%= render 'public/posts/posts_index', posts: @records %>
+      <%= render 'public/posts/posts_index', posts: @records, content: @content %>
   <% end %>
 </div>

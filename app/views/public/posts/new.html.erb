@@ -21,7 +21,9 @@
       <%= f.submit "つぶやく", class: "btn btn-lg btn-warning mb-5 ml-3" %>
     <% end %>
   <% else %>
-    <p>ゲストログインではつぶやき機能はご利用できません。ご利用の場合は</p>
-    <p>一度<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>してから、再度ログインまたは新規登録を行なってください。</p>
+    <p>
+      ゲストログインではつぶやき機能はご利用できません。ご利用の場合は<br>
+      一度<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>してから、再度ログインまたは新規登録を行なってください。
+    </p>
   <% end %>
 </div>

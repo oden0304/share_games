@@ -4,15 +4,29 @@
       Share Gamesへようこそ！
     </strong>
   </h1>
-  <p class="text-center pt-5">
-    このサイトは、様々なゲームの情報が知れるゲーム特化のつぶやきサイトです！<br>
-    ゲームの情報をつぶやいたり、興味のある人をフォローして最新情報をシェアしよう！
-  </p>
-  <p class="text-center pt-5">
-    登録したら、まずはお気に入りのユーザーをフォローしてフォローLvを上げてみよう！<br>
-    また、フォローされることでフォロワーレベルが上がっていくぞ！たくさんつぶやいてフォローしてもらおう！<br>
-    Lvを上げれば、よりたくさんの情報を共有できます！自分だけの情報共有サイトを作り上げよう！
-  </p>
+  <section class="message-list">
+    <section class="message -left">
+      <%= image_tag 'brave.png', size: "200x200" %>
+      <!-- Balloon -->
+      <div class="nes-balloon from-left is-dark">
+        <p>
+          このサイトは、様々なゲームの情報が知れるゲーム特化のつぶやきサイトです！<br>
+          ゲームの情報をつぶやいたり、興味のある人をフォローして最新情報をシェアしよう！
+        </p>
+      </div>
+    </section>
+    <section class="message -right">
+      <!-- Balloon -->
+      <div class="nes-balloon from-right is-dark">
+        <p>
+          登録したら、まずはお気に入りのユーザーをフォローしてフォローLvを上げてみよう！<br>
+          また、フォローされることでフォロワーレベルが上がっていくぞ！たくさんつぶやいてフォローしてもらおう！<br>
+          Lvを上げれば、よりたくさんの情報を共有できます！自分だけの情報共有サイトを作り上げよう！
+        </p>
+      </div>
+      <%= image_tag 'monster.png', size: "200x200" %>
+    </section>
+  </section>
   <div>
     <p class="text-center">
       <%= link_to "新規登録",  new_user_registration_path, class: "btn btn-success mr-5" %>

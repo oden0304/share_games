@@ -1,11 +1,17 @@
 <div class="border-bottom border-white mb-5"></div>
-<% users.each do |user| %>
-  <%= link_to public_user_path(user), class: "link" do %>
-    <table class="mt-4 ml-5">
-      <tr>
-        <th class="pr-3"><%= image_tag user.profile_image, class: "rounded-circle", size: "80x80" %></th>
-        <th><h4><b><%= user.name %></b></h4></th>
-      </tr>
+<% if users.empty? %>
+  <div class="text-center">
+    <p><b><%= content %></b>に一致するユーザーは見つかりませんでした。</p>
+  </div>
+<% else %>
+  <% users.each do |user| %>
+    <%= link_to public_user_path(user), class: "link" do %>
+      <table class="mt-4 ml-5">
+        <tr>
+          <th class="pr-3"><%= image_tag user.get_profile_image, class: "rounded-circle", size: "80x80" %></th>
+          <th><h4><b><%= user.name %></b></h4></th>
+        </tr>
+      </table>
     <% end %>
-  </table>
+  <% end %>
 <% end %>

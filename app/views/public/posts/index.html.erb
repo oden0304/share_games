@@ -1,20 +1,21 @@
 <div class="container nes-container is-rounded is-dark mx-auto my-bgc">
-  <%= form_tag public_posts_path, method: :get, class: 'boards__searchForm' do %>
+  <div class="border-bottom border^white my-3">
+    <%= form_tag public_posts_path, method: :get, class: 'boards__searchForm' do %>
     <% @tags.each do |tag| %>
       <div class="tag-box">
-        <%= link_to tag.name, public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill mt-2 mb-3" %>
+        <%= link_to tag.name, public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill my-3" %>
       </div>
     <% end %>
     <div class="tag-box">
-      <%= link_to "全て表示", public_posts_path, class: "btn btn-success rounded-pill mt-2 mb-3" %>
+      <%= link_to "全表示", public_posts_path, class: "btn btn-success rounded-pill my-3" %>
     </div>
   <% end %>
-  <div class="border-bottom border-white"></div>
+  </div>
   <% @posts.each do |post| %>
-    <div class="d-flex flex-row-reverse my-3">
+    <div class="d-flex flex-row-reverse">
       <% post.tags.each do |tag| %>
         <div>
-          <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill ml-3" do %>
+          <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill ml-3 mb-3" do %>
             <%= tag.name %>
           <% end %>
         </div>
