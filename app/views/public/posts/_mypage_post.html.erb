@@ -1,13 +1,5 @@
 <% posts.each do |post| %>
-  <div class="d-flex flex-row-reverse mt-5">
-    <% post.tags.each do |tag| %>
-      <div>
-        <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill ml-3" do %>
-          <%= tag.name %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= render "public/posts/post_tag", post: post %>
   <%= link_to public_post_path(post), class: "link" do %>
     <table class="mt-4 ml-5">
       <tr>
@@ -23,7 +15,7 @@
         <th class="pl-5 image-size"><%= image_tag post.post_image, size: "600x500" if post.post_image.attached? %></th>
       </tr>
     </table>
-    <div class="border-bottom border-white w-100 text-right p-3">
+    <div class="border-bottom border-white w-100 text-right p-3 mb-5">
       <div id="favorite_btn_<%= post.id %>">
         <b><%= render 'public/posts/favorite', post: post %></b>
       </div>

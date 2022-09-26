@@ -1,0 +1,9 @@
+<div class="d-flex flex-row-reverse">
+  <% post.tags.each do |tag| %>
+    <div>
+      <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill ml-3" do %>
+        <%= tag.name %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

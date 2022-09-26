@@ -13,6 +13,7 @@
           <% if current_admin %>
             <th class="mb-5"><%= link_to "削除", public_post_comment_path(post.id,comment.id), data: { confirm: "【確認】コメントを削除してよろしいですか？" }, method: :delete, remote: true, class: "btn btn-md btn-danger" %></th>
           <% end %>
+        </table>
       <% end %>
     </div>
   <% else %>
