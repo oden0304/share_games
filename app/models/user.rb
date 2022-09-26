@@ -57,6 +57,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
   # ゲストログイン
   def self.guest
     find_or_create_by!(name: 'guestuser') do |user|
