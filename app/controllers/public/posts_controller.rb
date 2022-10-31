@@ -6,8 +6,11 @@ class Public::PostsController < ApplicationController
 
   def index
     # タグ絞り込み↓
-    @posts = params[:name].present? ? Tag.find(params[:name]).posts.order(created_at: :desc) : Post.all.order(created_at: :desc)
+    @posts = params[:name].present? ? Tag.find(params[:name]).posts.order(created_at: :desc) : Post.includes(:user).order(created_at: :desc)
     @tags = Tag.all
+    if params[:tag]
+      Tag.create(name: params[:tag])
+    end
   end
   
   def follow_index               # 自分の投稿       # フォローした人の投稿
