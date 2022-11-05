@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+  resources :tags, only: [:index, :create, :destroy]
+  end
+  
   root to: 'public/homes#top'
   get '/search', to: 'searchs#search'
   

@@ -35,6 +35,7 @@
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
                   <%= link_to "ユーザー一覧", admin_root_path, class: "btn btn-light rounded-pill font-weight-bold mr-2" %>
                   <%= link_to "タイムライン", public_posts_path, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
+                  <%= link_to "タグ管理", admin_tags_path, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
                   <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-light rounded-pill font-weight-bold mr-2" %>
                 </li>
               <% elsif user_signed_in? %>

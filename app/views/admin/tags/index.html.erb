@@ -1,0 +1,12 @@
+<div class="container nes-container is-rounded is-dark mx-auto my-bgc">
+  <%= form_with model: @tags, url: admin_tags_path, method: :post do |f| %>
+    <%= f.text_field :tag, class: "rounded-pill"%>
+    <%= f.submit "タグを追加" %>
+  <% end %>
+  <% @tags.each do |tag| %>
+    <div>
+      <%= link_to tag.name, public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill my-3" %>
+      
+    </div>
+  <% end %>
+</div>
