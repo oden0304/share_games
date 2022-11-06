@@ -8,14 +8,18 @@ class Admin::TagsController < ApplicationController
     if @tag.save
       redirect_to admin_tags_path
     else
-      render :new
+      @tags = Tag.all
+      render :index
     end
   end
 
   def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    redirect_to admin_tags_path
   end
   
   def tag_params
-    params.require(:tag).permit(:tag)
+    params.require(:tag).permit(:name)
   end
 end
