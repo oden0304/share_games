@@ -54,7 +54,7 @@ User.create!(
 )
 
 # 投稿テストデータ
-Post.create! (
+Post.create!(
 [
     {text: 'ShareGames始めました。フォローよろしくお願いします！', user_id: 1, tag_ids: 9 },
     {post_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.png"), filename:"sample-post1.png"),text: '今日からBattle shooterやっていきます！', user_id: 1, tag_ids: 2 },
