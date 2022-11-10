@@ -1,5 +1,4 @@
 class Admin::TagsController < ApplicationController
-  
   def index
     @tags = Tag.all
   end
@@ -19,7 +18,7 @@ class Admin::TagsController < ApplicationController
     @tag.destroy
     redirect_to admin_tags_path
   end
-  
+
   def tag_params
     params.require(:tag).permit(:name)
   end

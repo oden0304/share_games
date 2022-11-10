@@ -1,9 +1,9 @@
 class Admin::HomesController < ApplicationController
   def top
-    unless admin_signed_in?
-      redirect_to new_admin_session_path
-    else
+    if admin_signed_in?
       @users = User.all
+    else
+      redirect_to new_admin_session_path
     end
   end
 end

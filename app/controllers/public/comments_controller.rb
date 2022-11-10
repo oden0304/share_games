@@ -11,9 +11,9 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
-  
+
   private
-  
+
   def comment_params
     params.require(:comment).permit(:comment)
   end

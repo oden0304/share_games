@@ -1,5 +1,4 @@
 class Public::PostsController < ApplicationController
-  
   def new
     @post = Post.new
   end
@@ -8,11 +7,11 @@ class Public::PostsController < ApplicationController
     # タグ絞り込み↓
     @posts = params[:name].present? ? Tag.find(params[:name]).posts.order(created_at: :desc) : Post.includes(:user).order(created_at: :desc)
     @tags = Tag.all
-    if params[:tag]
-      Tag.create(name: params[:tag])
-    end
+    return unless params[:tag]
+
+    Tag.create(name: params[:tag])
   end
-  
+
   def follow_index               # 自分の投稿       # フォローした人の投稿
     @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
   end
@@ -22,7 +21,7 @@ class Public::PostsController < ApplicationController
     @user = @post.user
     @comment = current_user.comments.new
   end
-  
+
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
@@ -31,15 +30,15 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to public_user_path(@post.user)
   end
-  
+
   private
-  
+
   def post_params
     params.require(:post).permit(:text, :post_image, tag_ids: [])
   end
