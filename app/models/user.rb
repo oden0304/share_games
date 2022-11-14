@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 15 }
 
-  # 新規登録時のチェックボックスのバリデーション
+  # 新規登録時の利用規約チェックボックスのバリデーション
   validates_acceptance_of :agreement, allow_nil: false, on: :create
 
   has_one_attached :profile_image

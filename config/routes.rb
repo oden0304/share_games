@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :tags, only: %i[index create destroy]
+    resources :tags, only: [:index, :create, :destroy]
   end
 
   root to: 'public/homes#top'
@@ -11,17 +11,17 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    resources :users, only: %i[show edit update destroy] do
-      resource :relationships, only: %i[create destroy]
+    resources :users, only: [:show, :edit, :update, :destroy] do
+      resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       member do
         get :favorites
       end
     end
-    resources :posts, only: %i[new index show create destroy] do
-      resources :comments, only: %i[create destroy]
-      resource :favorites, only: %i[create destroy]
+    resources :posts, only: [:new, :index, :show, :create, :destroy] do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     get 'homes/terms' => 'homes#terms'
     get 'follow_index' => 'posts#follow_index'
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     sessions: 'public/user/sessions'
   }
 
-  devise_for :admin, skip: %i[registrations passwords], controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
 
