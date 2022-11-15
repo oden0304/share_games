@@ -9,6 +9,8 @@ ja:
         agreement: 利用規約
       post: 
         text: 文字
+      comment:
+        comment: コメント
 
     errors:
       messages:

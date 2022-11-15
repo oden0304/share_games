@@ -1,5 +1,6 @@
 <div class="container nes-container is-rounded is-dark mx-auto my-bgc">
   <div class="row d-flex flex-row-reverse my-2 mr-3">
+    
     <% @post.tags.each do |tag| %>
       <div>
         <%= link_to public_posts_path(name: tag.id), class: "btn btn-warning rounded-pill ml-3" do %>

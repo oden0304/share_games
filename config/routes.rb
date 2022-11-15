@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         get :favorites
       end
     end
+    
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     get 'homes/terms' => 'homes#terms'
     get 'follow_index' => 'posts#follow_index'
   end
+  
   devise_for :users, path: :public, skip: [:passwords], controllers: {
     registrations: 'public/user/registrations',
     sessions: 'public/user/sessions'

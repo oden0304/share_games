@@ -1,0 +1,9 @@
+<% if model.errors.any? %>
+  <div class="alert container nes-container is-rounded is-dark mb-2 my-bgc ">
+    <ul>
+      <% model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
