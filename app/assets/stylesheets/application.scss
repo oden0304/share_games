@@ -167,3 +167,9 @@ footer{
 .form_size {
   width: 100%;
 }
+
+body, html { font-size: 15px; }
+@media screen and (max-width: 576px) {
+  body, html { font-size: 10px; } 
+  
+}
