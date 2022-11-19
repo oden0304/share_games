@@ -12,19 +12,18 @@
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
   </head>
   <body class="pixel-font">
-    <section class="hero">
-      <div class="video-box overlay">
-        <video class="video" muted autoplay playsinline>
-          <source src="/static/videos/top.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="text-box">
+    <div class="video-box overlay">
+      <video class="video" muted autoplay playsinline>
+        <source src="/static/videos/top.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="text-box">
       <header class="sticky-top"> <!--ヘッダー固定-->
         <nav class="navbar navbar-expand-sm mb-3 nes-container is-rounded is-dark">
           <h2>
             <strong>
               <%= link_to root_path do %>
-                <%= image_tag 'logo.png', size: "400x100"%>
+                <%= image_tag 'logo.png', class: "img-fluid" %>
               <% end %>
             </strong>
           </h2>
@@ -70,7 +69,32 @@
       <main>
         <%= yield %>
       </main>
-      </div>
-    </section>
+    </div>
+    <footer class="fixed-bottom d-sm-none">
+      <nav class="navbar navbar-expand-sm">
+        <ul class="w-100 shadow-lg list-unstyled list-group list-group-horizontal text-center">
+      <button class="mx-auto list-group-item list-group-item-action">
+        <%= link_to public_posts_path, class: "text-dark" do %>
+          <i class="fas fa-home"></i>
+        <% end %>
+      </button>
+      <button class="mx-auto list-group-item list-group-item-action">
+        <%= link_to public_follow_index_path, class: "text-dark" do %>
+          <i class="far fa-handshake"></i>
+        <% end %>
+      </button>
+      <button class="mx-auto list-group-item list-group-item-action">
+        <%= link_to new_public_post_path, class: "text-dark" do %>
+          <i class="far fa-comment-alt"></i>
+        <% end %>
+      </button>
+      <button class="mx-auto list-group-item list-group-item-action">
+        <%= link_to public_user_path(current_user), class: "text-dark" do %>
+          <i class="far fa-user"></i>
+        <% end %>
+      </button>
+    </ul>
+      </nav>
+    </footer>
   </body>
 </html>
