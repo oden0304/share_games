@@ -21,9 +21,9 @@
         <div class="pt-5">
           <%= render "public/posts/error_messages", model: @post %>
         </div>
+        <%= f.text_area :text, size: "100x20", class: "form_size" %>
+        <%= f.submit "つぶやく", class: "btn btn-lg btn-warning mb-5 ml-3" %>
       </div>
-      <%= f.text_area :text, size: "100x20"%>
-      <%= f.submit "つぶやく", class: "btn btn-lg btn-warning mb-5 ml-3" %>
     <% end %>
   <% end %>
 </div>
