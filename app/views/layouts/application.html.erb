@@ -70,38 +70,38 @@
         <%= yield %>
       </main>
     </div>
-    <% if admin_signed_in? || user_signed_in? %>
-      <footer class="fixed-bottom d-sm-none">
+    <footer class="fixed-bottom d-sm-none">
+      <% if admin_signed_in? || user_signed_in? %>
         <nav class="navbar navbar-expand-sm">
           <ul class="w-100 shadow-lg list-unstyled list-group list-group-horizontal text-center">
-        <button class="mx-auto list-group-item list-group-item-action">
-          <%= link_to public_posts_path, class: "text-dark" do %>
-            <i class="fas fa-home"></i>
-          <% end %>
-        </button>
-        <button class="mx-auto list-group-item list-group-item-action">
-          <%= link_to public_follow_index_path, class: "text-dark" do %>
-            <i class="far fa-handshake"></i>
-          <% end %>
-        </button>
-        <button class="mx-auto list-group-item list-group-item-action">
-          <%= link_to new_public_post_path, class: "text-dark" do %>
-            <i class="far fa-comment-alt"></i>
-          <% end %>
-        </button>
-        <button class="mx-auto list-group-item list-group-item-action">
-          <%= link_to public_user_path(current_user), class: "text-dark" do %>
-            <i class="far fa-user"></i>
-          <% end %>
-        </button>
-        <button class="mx-auto list-group-item list-group-item-action">
-          <%= link_to destroy_user_session_path, method: :delete, class: "text-dark" do %>
-            <i class="fas fa-sign-out-alt"></i>
-          <% end %>
-        </button>
-      </ul>
+            <button class="mx-auto list-group-item list-group-item-action">
+              <%= link_to public_posts_path, class: "text-dark" do %>
+                <i class="fas fa-home"></i>
+              <% end %>
+            </button>
+            <button class="mx-auto list-group-item list-group-item-action">
+              <%= link_to public_follow_index_path, class: "text-dark" do %>
+                <i class="far fa-handshake"></i>
+              <% end %>
+            </button>
+            <button class="mx-auto list-group-item list-group-item-action">
+              <%= link_to new_public_post_path, class: "text-dark" do %>
+                <i class="far fa-comment-alt"></i>
+              <% end %>
+            </button>
+            <button class="mx-auto list-group-item list-group-item-action">
+              <%= link_to public_user_path(current_user), class: "text-dark" do %>
+                <i class="far fa-user"></i>
+              <% end %>
+            </button>
+            <button class="mx-auto list-group-item list-group-item-action">
+              <%= link_to destroy_user_session_path, method: :delete, class: "text-dark" do %>
+                <i class="fas fa-sign-out-alt"></i>
+              <% end %>
+            </button>
+          </ul>
         </nav>
-      </footer>
-    <% end %>
+      <% end %>
+    </footer>
   </body>
 </html>

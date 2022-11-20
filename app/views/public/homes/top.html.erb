@@ -5,9 +5,7 @@
     </strong>
   </h1>
   <section class="message-list">
-    <section class="message -left">
-      <%= image_tag 'brave.png', size: "200x200" %>
-      <!-- Balloon -->
+    <section class="message -left text-center">
       <div class="nes-balloon from-left is-dark">
         <p>
           このサイトは、様々なゲームの情報が知れるゲーム特化のつぶやきサイトです！<br>
@@ -15,20 +13,25 @@
         </p>
       </div>
     </section>
-    <section class="message -right">
+    <div>
+      <%= image_tag 'brave.png', size: "200x200", class: "img-fluid center-block left-position" %>
+    </div>
+    <section class="message -right text-center">
       <!-- Balloon -->
-      <div class="nes-balloon from-right is-dark">
+      <div class="nes-balloon from-right is-dark message-margin">
         <p>
           登録したら、まずはお気に入りのユーザーをフォローしてフォローLvを上げてみよう！<br>
           また、フォローされることでフォロワーレベルが上がっていくぞ！たくさんつぶやいてフォローしてもらおう！<br>
           Lvを上げれば、よりたくさんの情報を共有できます！自分だけの情報共有サイトを作り上げよう！
         </p>
       </div>
-      <%= image_tag 'monster.png', size: "200x200" %>
     </section>
+    <div class="text-right">
+      <%= image_tag 'monster.png', size: "200x200", class: "img-fluid center-block right-position" %>
+    </div>
   </section>
   <div>
-    <p class="text-center">
+    <p class="text-center btn-margin">
       <%= link_to "新規登録",  new_user_registration_path, class: "btn btn-success mr-5" %>
       <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary mr-5" %>
       <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary", method: :post %>

@@ -168,8 +168,32 @@ footer{
   width: 100%;
 }
 
-body, html { font-size: 15px; }
+body, html {
+  font-size: 15px; 
+}
+
 @media screen and (max-width: 576px) {
-  body, html { font-size: 10px; } 
+  body, html {
+    font-size: 10px; 
+  } 
   
+  .left-position {
+    position: absolute;
+    top: 150px;
+    right: 200px;
+  }
+  
+  .right-position {
+    position: absolute;
+    top: 450px;
+    left: 200px;
+  }
+  
+  .btn-margin {
+    margin-top: 80px;
+  }
+  
+  .message-margin {
+    margin-bottom: 100px;
+  }
 }
