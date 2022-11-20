@@ -3,7 +3,7 @@
   <%= form_with model: @user, url: public_user_path(@user) do |f| %>
     <table class="ml-5">
       <tr>
-        <th><%= image_tag @user.get_profile_image, class: "rounded-circle", size: "200x200" %></th>
+        <th><%= image_tag @user.get_profile_image, class: "rounded-circle ", size: "200x200" %></th>
       </tr>
       <tr>
         <th>
@@ -22,10 +22,10 @@
       </tr>
       <tr>
         <th>自己紹介</th>
-        <th><%= f.text_area :introduction, size: "40x10" %></th>
+        <th><%= f.text_area :introduction, size: "40x10", class: "form_size" %></th>
       </tr>
     </table>
-    <div class="text-right mb-3 mr-5">
+    <div class="text-right mb-3 mr-5 pb-5">
       <%= link_to "マイページに戻る", public_user_path(current_user), class: "btn btn-lg btn-primary"%>
       <%= f.submit "更新", method: :patch, class: "btn btn-lg btn-success" %>
     </div>
