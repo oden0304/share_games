@@ -59,6 +59,10 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  def followed_by?(user)
+    relationships.find_by(followed_id: user.id).present?
+  end
 
   # ゲストログイン
   def self.guest

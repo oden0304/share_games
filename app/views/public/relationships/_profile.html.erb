@@ -1,10 +1,12 @@
 <table class="m-5">
   <tr>
-    <th><%= image_tag user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "200x200" %></th>
+    <th></th>
     <th><h2 class="ml-5"><b><%= user.name %></b></h2></th>
   </tr>
+</table>
+<table class="m-5">
   <tr>
-    <th class="pt-3 pb-3" >
+    <th class="py-3 pr-2" >
       <% unless user == current_user %>
         <% if current_user.following?(user) %>
           <%= link_to "フォロー外す", public_user_relationships_path(user.id), method: :delete, class: "btn btn-danger", remote: true %>
@@ -19,15 +21,39 @@
           <%= link_to "編集", edit_public_user_path(user), class: "btn btn-success mr-auto" %>
         <% end %>
       <% end %>
+      </th>
+      <th class="pt-3">
+      <!--相互フォローのみチャットリンク表示-->
+      <% unless user.id == current_user.id %>
+        <% if (current_user.followed_by? user) && (user.followed_by? current_user)  %>
+          <% if isRoom == true %>
+            <p class="user-show-room">
+              <%= link_to public_room_path(roomId), class: "btn btn-primary" do %>
+                <i class="far fa-envelope"></i>
+              <% end %>
+          <% else %>
+            <%= form_with model: room, url: public_rooms_path, method: :post do |f| %>
+              <%= fields_for entry do |e| %>
+                <%= e.hidden_field :user_id, value: user.id %>
+              <% end %>
+              <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+                <i class="far fa-envelope"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
     </th>
     <th></th>
   </tr>
-  <th>総レベル:</th>
+</table>
+<table class="m-5">
+  <tr>
+    <th width="100">総レベル:</th>
     <th id='following-count_<%= user.id %>'>
       Lv. <%= user.followings.count + user.followers.count %>
     </th>
   </tr>
-  <tr>
   <tr>
     <th>フォロー:</th>
     <th id='following-count_<%= user.id %>'>

@@ -3,7 +3,7 @@
   <%= link_to public_post_path(post), class: "link" do %>
     <table class="mt-4 ml-5">
       <tr>
-        <th class="pr-3"><%= image_tag post.user.get_profile_image, class: "rounded-circle img-size", size: "80x80" %></th>
+        <th class="pr-3"><%= image_tag post.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "80x80" %></th>
         <th><h4><b><%= post.user.name %></b></h4></th>
       </tr>
     </table>

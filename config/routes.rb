@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   namespace :admin do
     resources :tags, only: [:index, :create, :destroy]
   end
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
         get :favorites
       end
     end
+    
+    resources :rooms, only: [:create, :show]
+    resources :messages, only: [:create]
     
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
