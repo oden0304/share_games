@@ -20,11 +20,13 @@
         <% @messages.each do |m| %>
           <table>
             <tr>
-              <th>
+              <th class="p-5">
                 <%= image_tag m.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "50x50" %>
               </th>
-              <th class="p-5">
-                <%= safe_join(m.content.split("\n"),tag(:br)) %><br>
+              <th class="nes-balloon is-dark">
+                <%= safe_join(m.content.split("\n"),tag(:br)) %>
+              </th> 
+              <th>
                 <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
               </th>
             </tr>
