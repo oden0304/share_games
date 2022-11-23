@@ -1,16 +1,16 @@
-<div class="container nes-container is-rounded is-dark mx-auto my-bgc">
-  <div class="left-button">
-    <%= link_to "ユーザー一覧に戻る", "/users/index",class:"edit-link" %>
+<div class="container nes-container is-rounded is-dark mx-auto my-bgc p-5">
+  <div class="pb-5">
+    <%= link_to "ユーザー一覧に戻る", public_user_path(@user.id), class:"edit-link btn btn-warning rounded-pill" %>
   </div>
-  <h4 class="rooms-title">気になる同士</h4>
+  <h2 class="rooms-title">メッセージ</h2>
   <% @entries.each do |e| %>
-    <div class="user-name">
-    <strong>
-      <%= image_tag e.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "50x50" %>
-        <a class="rooms-user-link" href="/users/<%= e.user.id %>">
+    <div class="pt-3">
+      <strong>
+        <%= image_tag e.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "50x50" %>
+        <%= link_to public_user_path(e.user.id), class: "link" do %>
           <%= e.user.name %>さん
-        </a>
-    </strong>
+        <% end %>
+      </strong>
     </div>
   <% end %>
   <hr>
@@ -18,22 +18,25 @@
     <div class="chat">
       <% if @messages.present? %>
         <% @messages.each do |m| %>
-          <div class="chat-box">
-            <div class="chat-face">
-              <%= image_tag m.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "50x50" %>
-            </div>
-            <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
-              <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
-            </div>
-          </div>
+          <table>
+            <tr>
+              <th>
+                <%= image_tag m.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "50x50" %>
+              </th>
+              <th class="p-5">
+                <%= safe_join(m.content.split("\n"),tag(:br)) %><br>
+                <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+              </th>
+            </tr>
+          </table>
         <% end %>
       <% end %>
     </div>
     <div class="posts">
       <%= form_with model: @message, url: public_messages_path do |f| %>
-        <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
-          <%= f.hidden_field :room_id, value: @room.id %>
-            <%= f.submit "投稿",class: 'form-submit'%>
+        <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: "100x2", class: "form_size" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+        <%= f.submit '送信', class: "btn btn-md btn-primary mb-5" %>
       <% end %>
     </div>
   </div>
