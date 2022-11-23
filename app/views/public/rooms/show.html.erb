@@ -1,6 +1,6 @@
 <div class="container nes-container is-rounded is-dark mx-auto my-bgc p-5">
   <div class="pb-5">
-    <%= link_to "ユーザー一覧に戻る", public_user_path(@user.id), class:"edit-link btn btn-warning rounded-pill" %>
+    <%= link_to "戻る", public_user_path(@user.id), class:"edit-link btn btn-warning rounded-pill" %>
   </div>
   <h2 class="rooms-title">メッセージ</h2>
   <% @entries.each do |e| %>
