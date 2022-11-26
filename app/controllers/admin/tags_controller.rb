@@ -8,6 +8,7 @@ class Admin::TagsController < ApplicationController
     if @tag.save
       redirect_to admin_tags_path
     else
+      flash.now[:alert] = "文字を入力してください"
       @tags = Tag.all
       render :index
     end

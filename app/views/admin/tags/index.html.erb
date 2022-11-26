@@ -1,5 +1,6 @@
 <div class="container nes-container is-rounded is-dark mx-auto my-bgc">
   <%= form_with model: @tags, url: admin_tags_path, method: :post do |f| %>
+    <%= flash[:alert] %>
     <%= f.text_field :name, value: "", class: "rounded-pill"%>
     <%= f.submit "タグを追加" %>
   <% end %>
