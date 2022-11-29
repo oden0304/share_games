@@ -1,0 +1,9 @@
+<div class="container nes-container is-rounded is-dark mx-auto my-bgc">
+  <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+  <% if notifications.exists? %>
+    <%= render notifications, notification: @notification, visiter: @visiter %>
+    <%= paginate notifications %>
+  <% else %>
+    <p>通知はありません。</p>
+  <% end %>
+</div>

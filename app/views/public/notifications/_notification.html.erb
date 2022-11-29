@@ -1,0 +1,44 @@
+<div class="container nes-container is-rounded is-dark mx-auto my-bgc pb-5">
+  <% visitor = notification.visitor %>
+  <% visited = notification.visited %>
+  <div class="pl-5">
+    <div class="form-inline">
+      <span>
+        <%= link_to public_user_path(visitor) do %>
+          <%= image_tag notification.visitor.get_profile_image, class: "rounded-circle", size: "80x80" %>
+          <%= visitor.name %>
+        <% end %>
+        <%= "さんが" %>
+        <% case notification.action 
+          when 'follow' %>
+          <%= "あなたをフォローしました。" %>
+        <% when 'like' %>
+          <%= link_to 'あなたの投稿', public_post_path(notification.post), class: "font-weight-bold" %>
+          <%= "にいいねしました。" %>
+          <p class="text-muted mb-0 pl-5">
+            <%= Post.find_by(id: notification.post_id)&.text %>
+          </p>
+        <% when 'comment' %>
+          <% if notification.post.user_id == visited.id %>
+            <%= link_to "あなたの投稿", public_post_path(notification.post), class: "font-weight-bold" %>
+          <% else %>
+            <span>
+              <%= link_to public_post_path(notification.post) do %>
+                <strog>
+                  <%= notification.post.user.name + 'さんの投稿' %>
+                </strog>
+              <% end %>
+            </span>
+          <% end %>
+          <%= "にコメントしました" %>
+          <p class="text-muted mb-0 pl-5">
+            <%= Comment.find_by(id: notification.comment_id)&.comment %>
+          </p>
+        <% end %>
+      </span>
+    </div>
+    <div class="small text-muted text-right">
+      <%= time_ago_in_words(notification.created_at).upcase %>
+    </div>
+  </div>
+</div>

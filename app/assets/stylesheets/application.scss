@@ -168,6 +168,20 @@ footer{
   width: 100%;
 }
 
+.fa-stack-1x {
+  position: absolute;
+  right: 210px;
+  bottom: 20px;
+  color: red;
+}
+
+.circle {
+  position:absolute;
+  top: 0;
+  left: 0;
+  color: blue;
+}
+
 body, html {
   font-size: 15px; 
 }

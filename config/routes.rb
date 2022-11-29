@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :rooms, only: [:create, :show]
     resources :messages, only: [:create]
     
+    resources :notifications, only: [:index]
+    
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

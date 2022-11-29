@@ -67,3 +67,4 @@ gem 'net-pop'
 gem 'net-smtp'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
+gem 'kaminari', '~> 0.17.0'
