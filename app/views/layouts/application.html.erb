@@ -41,16 +41,16 @@
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
                   <%= link_to "マイページ", public_user_path(current_user), class: "btn btn-light rounded-pill font-weight-bold mr-2" %>
-                  <%= link_to "通知", public_notifications_path, class: "btn btn-light rounded-pill font-weight-bold mr-2" %>
+                  <%= link_to "通知", public_notifications_path, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
                     <% if unchecked_notifications.any? %>
                       <span>
                         <i class="fa fa-circle notification-circle fa-stack-1x"></i>
                       </span>
                     <% end %>
-                  <%= link_to "つぶやく", new_public_post_path, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
-                  <%= link_to "フォロータイムライン", public_follow_index_path, class: "btn btn-light rounded-pill font-weight-bold mr-2" %>
-                  <%= link_to "タイムライン", public_posts_path, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
-                  <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-light rounded-pill font-weight-bold mr-2" %>
+                  <%= link_to "つぶやく", new_public_post_path, class: "btn btn-light rounded-pill font-weight-bold mr-2" %>
+                  <%= link_to "フォロータイムライン", public_follow_index_path, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
+                  <%= link_to "タイムライン", public_posts_path, class: "btn btn-light rounded-pill font-weight-bold mr-2" %>
+                  <%= link_to "利用規約", public_homes_terms_path, class: "btn btn-warning rounded-pill font-weight-bold mr-2" %>
                 </li>
               <% else %>
                 <li class="nav-item ml-4">
@@ -100,10 +100,14 @@
                 <i class="far fa-user"></i>
               <% end %>
             </button>
-            <button class="mx-auto list-group-item list-group-item-action circle">
+            <button class="mx-auto list-group-item list-group-item-action">
               <%= link_to public_notifications_path, class: "text-dark" do %>
                 <i class="far fa-bell"></i>
-                <i class="fa fa-circle notification-circle"></i>
+                <% if unchecked_notifications.any? %>
+                  <span>
+                    <i class="fa fa-circle notification-circle fa-stack-1x"></i>
+                  </span>
+                <% end %>
               <% end %>
             </button>
             <button class="mx-auto list-group-item list-group-item-action">
