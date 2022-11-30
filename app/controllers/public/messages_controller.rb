@@ -7,6 +7,5 @@ class Public::MessagesController < ApplicationController
     else
       flash.now[:alert] = "メッセージ送信に失敗しました。"
     end
-    redirect_to public_room_path(@message.room_id)
   end
 end

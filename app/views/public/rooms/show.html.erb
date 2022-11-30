@@ -34,13 +34,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="posts">
-      <%= form_with model: @message, url: public_messages_path, local: true do |f| %>
-        <%= flash[:alert] %>
-        <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: "100x2", class: "form_size" %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-        <%= f.submit '送信', class: "btn btn-md btn-primary mb-5" %>
-      <% end %>
+    <div id="message">
+      <%= render "public/messages/message", message: @message, room: @room %>
     </div>
   </div>
 </div>
