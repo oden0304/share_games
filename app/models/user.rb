@@ -27,6 +27,9 @@ class User < ApplicationRecord
   # 通知
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  
+  # リポスト
+  has_many :reposts, dependent: :destroy
 
   # フォロー通知
   def create_notification_follow!(current_user)
@@ -91,5 +94,21 @@ class User < ApplicationRecord
 
   def get_profile_image
     profile_image.attached? ? profile_image : 'no_image.png'
+  end
+  
+  # リポスト済みか判定
+  def reposted?(post_id)
+    self.reposts.where(post_id: post_id).exists?
+  end
+  
+  # ユーザ自身の投稿及びリポストした投稿を取得するメソッド
+  def posts_with_reposts
+  relation = Post.joins("LEFT OUTER JOIN reposts ON posts.id = reposts.post_id AND reposts.user_id = #{self.id}")
+                 .select("posts.*, reposts.user_id AS repost_user_id, (SELECT name FROM users WHERE id = repost_user_id) AS repost_user_name")
+  relation.where(user_id: self.id)
+          .or(relation.where("reposts.user_id = ?", self.id))
+          .with_attached_post_image
+          .preload(:user, :comments, :favorites, :reposts)
+          .order(Arel.sql("CASE WHEN reposts.created_at IS NULL THEN posts.created_at ELSE reposts.created_at END"))
   end
 end

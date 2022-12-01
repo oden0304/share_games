@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      resources :reposts, only: [:create, :destroy]
     end
     get 'homes/terms' => 'homes#terms'
     get 'follow_index' => 'posts#follow_index'

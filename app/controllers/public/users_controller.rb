@@ -1,8 +1,10 @@
 class Public::UsersController < ApplicationController
   before_action :correct_user, only: [:edit]
+  before_action :set_user
 
   def show
     @user = User.find(params[:id])
+    @post = @user.posts_with_reposts
     @posts = Post.where(user_id: @user.id).includes(:user).order(created_at: :desc)
     favorites = Favorite.where(user_id: @user.id).order(created_at: :desc).pluck(:post_id) # いいねしたユーザーのIDを取得し、pluckメソッドで投稿IDを取得する
     @favorite_posts = Post.find(favorites)
@@ -50,5 +52,9 @@ class Public::UsersController < ApplicationController
     return if @user == current_user
 
     redirect_to public_user_path(current_user)
+  end
+  
+  def set_user
+    @user = User.find(params[:id])
   end
 end

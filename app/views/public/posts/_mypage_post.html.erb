@@ -1,5 +1,18 @@
 <% posts.each do |post| %>
   <%= render "public/posts/post_tag", post: post %>
+  <% posts.each_with_index.reverse_each do |post, i| %>
+    <% if post.has_attribute?(:repost_user_id) %>
+      <% if post.repost_user_id.present? %>
+        <div class="post-repost">
+          <i class="fas fa-retweet"></i>
+          <%= link_to post.repost_user_name, "/users/#{post.repost_user_id}", "data-turbolinks": false %>さんがリポスト
+        </div>
+      <% end %>
+      <%= link_to user_path(post.user.id), "data-turbolinks": false do %>
+        <%= image_tag post.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "80x80" %>
+      <% end %>
+    <% end %>
+  <% end %>
   <%= link_to public_post_path(post), class: "link" do %>
     <table class="mt-4 ml-5">
       <tr>
@@ -17,6 +30,9 @@
     <div class="border-bottom border-white w-100 text-right p-3 mb-5">
       <div id="favorite_btn_<%= post.id %>">
         <b><%= render 'public/posts/favorite', post: post %></b>
+      </div>
+      <div>
+        <b><%= render "public/reposts/repost", post: post %></b>
       </div>
       <div>
         <%= render "public/comments/comment_count", post: post %>

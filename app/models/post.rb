@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   validates :text, presence: true, length: { maximum: 140 }
   # 通知
   has_many :notifications, dependent: :destroy
+  # リポスト
+  has_many :reposts, dependent: :destroy
   has_one_attached :post_image
   
   # いいね通知
