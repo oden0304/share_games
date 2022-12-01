@@ -34,7 +34,7 @@
         <% end %>
       <% end %>
     </div>
-    <div id="message">
+    <div id="message_<%= @message.id %>">
       <%= render "public/messages/message", message: @message, room: @room %>
     </div>
   </div>

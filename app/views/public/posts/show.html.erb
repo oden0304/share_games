@@ -30,6 +30,9 @@
         <div id="favorite_btn_<%= @post.id %>">
           <b><%= render 'public/posts/favorite', post: @post %></b>
         </div>
+        <div>
+          <b><%= render "public/reposts/repost", post: @post %></b>
+        </div>
         <div id="comment_count">
           <%= render "public/comments/comment_count", post: @post %>
         </div>

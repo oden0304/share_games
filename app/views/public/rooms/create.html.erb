@@ -1,0 +1,2 @@
+$("#message_<%= @message.id %>").html("<%= j(render 'public/messages/message', message: @message, room: @room) %>");
+$('input[type=text]').val("")

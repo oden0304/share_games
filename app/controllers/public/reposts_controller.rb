@@ -19,6 +19,7 @@ class Public::RepostsController < ApplicationController
   end
 
   private
+  
   def set_post  # リポストボタンを押した投稿を特定する
     @post = Post.find(params[:post_id])
     if @post.nil?

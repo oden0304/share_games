@@ -27,9 +27,9 @@ Rails.application.routes.draw do
     resources :notifications, only: [:index]
     
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
+      resources :reposts, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
-      resources :reposts, only: [:create, :destroy]
     end
     get 'homes/terms' => 'homes#terms'
     get 'follow_index' => 'posts#follow_index'

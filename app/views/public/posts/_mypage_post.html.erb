@@ -5,11 +5,8 @@
       <% if post.repost_user_id.present? %>
         <div class="post-repost">
           <i class="fas fa-retweet"></i>
-          <%= link_to post.repost_user_name, "/users/#{post.repost_user_id}", "data-turbolinks": false %>さんがリポスト
+          <%= link_to post.user.name, "/public/users/#{post.repost_user_id}", "data-turbolinks": false %>さんがリポスト
         </div>
-      <% end %>
-      <%= link_to user_path(post.user.id), "data-turbolinks": false do %>
-        <%= image_tag post.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "80x80" %>
       <% end %>
     <% end %>
   <% end %>

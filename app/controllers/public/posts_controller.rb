@@ -10,6 +10,13 @@ class Public::PostsController < ApplicationController
     return unless params[:tag]
 
     Tag.create(name: params[:tag])
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @posts = @user.followings_posts_with_reposts
+    else
+      # 未ログインの場合、フォローやタイムラインといった概念が無いため、リポストは表示せず投稿のみを表示
+      @posts = Post.with_attached_images.preload(:user, :review, :comments, :likes)
+    end
   end
 
   def follow_index               # 自分の投稿       # フォローした人の投稿
