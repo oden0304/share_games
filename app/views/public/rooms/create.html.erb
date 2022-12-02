@@ -1,2 +1,3 @@
-$("#message_<%= @message.id %>").html("<%= j(render 'public/messages/message', message: @message, room: @room) %>");
-$('input[type=text]').val("")
+$("#message_form_<%= @message.id %>").html("<%= j(render 'public/messages/message_form', message: @message, room: @room) %>");
+$("#message_<%= @message.id %>").html("<%= j(render 'public/messages/message', messages: @messages) %>");
+document.getElementById("message_form_<%= @message.id %>").value = ''

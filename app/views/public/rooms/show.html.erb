@@ -15,27 +15,11 @@
   <% end %>
   <hr>
   <div class="chats">
-    <div class="chat">
-      <% if @messages.present? %>
-        <% @messages.each do |m| %>
-          <table>
-            <tr>
-              <th class="p-5">
-                <%= image_tag m.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "50x50" %>
-              </th>
-              <th class="nes-balloon is-dark">
-                <%= safe_join(m.content.split("\n"),tag(:br)) %>
-              </th> 
-              <th>
-                <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
-              </th>
-            </tr>
-          </table>
-        <% end %>
-      <% end %>
+    <div id="messege_<%= @message.id %>">
+      <%= render "public/messages/message", messages: @messages %>
     </div>
-    <div id="message_<%= @message.id %>">
-      <%= render "public/messages/message", message: @message, room: @room %>
+    <div id="message_form_<%= @message.id %>">
+      <%= render "public/messages/message_form", message: @message, room: @room %>
     </div>
   </div>
 </div>

@@ -1,6 +1,17 @@
-<%= form_with model: message, url: public_messages_path, method: :post, local: false do |f| %>
-  <%= flash.now[:alert] %>
-  <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: "100x2", class: "form_size" %>
-  <%= f.hidden_field :room_id, value: room.id %>
-  <%= f.submit '送信', class: "btn btn-md btn-primary mb-5" %>
+<% if @messages.present? %>
+  <% messages.each do |m| %>
+    <table>
+      <tr>
+        <th class="p-5">
+          <%= image_tag m.user.get_profile_image, class: "rounded-circle img-fluid center-block", size: "50x50" %>
+        </th>
+        <th class="nes-balloon is-dark">
+          <%= safe_join(m.content.split("\n"),tag(:br)) %>
+        </th> 
+        <th>
+          <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+        </th>
+      </tr>
+    </table>
+  <% end %>
 <% end %>
