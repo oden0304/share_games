@@ -26,7 +26,7 @@
 
 ##  説計書
 ### ER図
-<img width="894" alt="スクリーンショット 2022-09-21 16 55 22 1" src="https://user-images.githubusercontent.com/108508043/191448198-4928ff8f-b431-467f-8ae4-543cde4c4970.png">
+<img width="1030" alt="スクリーンショット 2022-12-02 10 49 09" src="https://user-images.githubusercontent.com/108508043/205200165-ee52924f-2ae2-4e70-83f5-ae617dc60fd7.png">
 
 ## 開発環境
 - OS：macOS Monterey
